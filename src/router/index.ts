@@ -44,6 +44,16 @@ export const constantRouterMap: AppRouteRecordRaw[] = [
     }
   },
   {
+    path: '/new-login',
+    component: () => import('@/views/newLogin/index.vue'),
+    name: 'newLogin',
+    meta: {
+      hidden: true,
+      title: t('router.login'),
+      noTagsView: true
+    }
+  },
+  {
     path: '/404',
     component: () => import('@/views/Error/404.vue'),
     name: 'NoFind',
