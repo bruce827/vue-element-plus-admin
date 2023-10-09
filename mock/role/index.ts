@@ -231,6 +231,14 @@ const adminList = [
         }
       },
       {
+        path: 'icon-picker',
+        component: 'views/Components/IconPicker',
+        name: 'IconPicker',
+        meta: {
+          title: 'router.iconPicker'
+        }
+      },
+      {
         path: 'echart',
         component: 'views/Components/Echart',
         name: 'Echart',
@@ -277,6 +285,14 @@ const adminList = [
         meta: {
           title: 'router.inputPassword'
         }
+      },
+      {
+        path: 'waterfall',
+        component: 'views/Components/Waterfall',
+        name: 'Waterfall',
+        meta: {
+          title: 'router.waterfall'
+        }
       }
     ]
   },
@@ -307,6 +323,14 @@ const adminList = [
           hidden: true,
           title: 'router.details',
           canTo: true
+        }
+      },
+      {
+        path: 'request',
+        component: 'views/Function/Request',
+        name: 'Request',
+        meta: {
+          title: 'router.request'
         }
       }
     ]
@@ -352,6 +376,22 @@ const adminList = [
         name: 'UseCrudSchemas',
         meta: {
           title: 'useCrudSchemas'
+        }
+      },
+      {
+        path: 'useClipboard',
+        component: 'views/hooks/useClipboard',
+        name: 'UseClipboard',
+        meta: {
+          title: 'useClipboard'
+        }
+      },
+      {
+        path: 'useNetwork',
+        component: 'views/hooks/useNetwork',
+        name: 'UseNetwork',
+        meta: {
+          title: 'useNetwork'
         }
       }
     ]
@@ -602,21 +642,25 @@ const testList: string[] = [
   '/components/image-viewer',
   '/components/dialog',
   '/components/icon',
+  '/components/iconPicker',
   '/components/echart',
   '/components/count-to',
   '/components/qrcode',
   '/components/highlight',
   '/components/infotip',
-  '/Components/InputPassword',
-  '/Components/Sticky',
+  '/components/input-password',
+  '/components/waterfall',
   'function',
   '/function/multiple-tabs',
   '/function/multiple-tabs-demo/:id',
+  '/function/request',
   '/hooks',
   '/hooks/useWatermark',
   '/hooks/useTagsView',
   '/hooks/useValidator',
   '/hooks/useCrudSchemas',
+  '/hooks/useClipboard',
+  '/hooks/useNetwork',
   '/level',
   '/level/menu1',
   '/level/menu1/menu1-1',

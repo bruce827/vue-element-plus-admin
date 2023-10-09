@@ -174,7 +174,10 @@ export default {
     permission: 'Permission test page',
     function: 'Function',
     multipleTabs: 'Multiple tabs',
-    details: 'Details'
+    details: 'Details',
+    iconPicker: 'Icon picker',
+    request: 'Request',
+    waterfall: 'Waterfall'
   },
   permission: {
     hasPermission: 'Please set the operation permission value'
@@ -320,7 +323,8 @@ export default {
     lazyLoad: 'Lazy load',
     upload: 'Upload',
     // 用户头像
-    userAvatar: 'User avatar'
+    userAvatar: 'User avatar',
+    iconPicker: 'Icon picker'
   },
   guideDemo: {
     guide: 'Guide',

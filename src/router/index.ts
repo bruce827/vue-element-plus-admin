@@ -282,6 +282,14 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
         }
       },
       {
+        path: 'icon-picker',
+        component: () => import('@/views/Components/IconPicker.vue'),
+        name: 'IconPicker',
+        meta: {
+          title: t('router.iconPicker')
+        }
+      },
+      {
         path: 'echart',
         component: () => import('@/views/Components/Echart.vue'),
         name: 'Echart',
@@ -328,6 +336,14 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
         meta: {
           title: t('router.inputPassword')
         }
+      },
+      {
+        path: 'waterfall',
+        component: () => import('@/views/Components/Waterfall.vue'),
+        name: 'waterfall',
+        meta: {
+          title: t('router.waterfall')
+        }
       }
     ]
   },
@@ -359,6 +375,14 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
           title: t('router.details'),
           canTo: true,
           activeMenu: '/function/multiple-tabs'
+        }
+      },
+      {
+        path: 'request',
+        component: () => import('@/views/Function/Request.vue'),
+        name: 'Request',
+        meta: {
+          title: t('router.request')
         }
       }
     ]
@@ -404,6 +428,22 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
         name: 'UseCrudSchemas',
         meta: {
           title: 'useCrudSchemas'
+        }
+      },
+      {
+        path: 'useClipboard',
+        component: () => import('@/views/hooks/useClipboard.vue'),
+        name: 'UseClipboard',
+        meta: {
+          title: 'useClipboard'
+        }
+      },
+      {
+        path: 'useNetwork',
+        component: () => import('@/views/hooks/useNetwork.vue'),
+        name: 'UseNetwork',
+        meta: {
+          title: 'useNetwork'
         }
       }
     ]
