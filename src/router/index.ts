@@ -35,7 +35,8 @@ export const constantRouterMap: AppRouteRecordRaw[] = [
   },
   {
     path: '/login',
-    component: () => import('@/views/Login/Login.vue'),
+    // component: () => import('@/views/Login/Login.vue'),
+    component: () => import('@/views/newLogin/index.vue'),
     name: 'Login',
     meta: {
       hidden: true,
@@ -61,6 +62,16 @@ export const constantRouterMap: AppRouteRecordRaw[] = [
       hidden: true,
       title: '404',
       noTagsView: true
+    }
+  },
+  {
+    path: '/data-view',
+    component: () => import('@/views/DataView/pump.vue'),
+    name: 'DataView',
+    meta: {
+      title: '数据大屏demo',
+      icon: 'ci:error',
+      alwaysShow: true
     }
   }
 ]
@@ -676,7 +687,7 @@ const router = createRouter({
 })
 
 export const resetRouter = (): void => {
-  const resetWhiteNameList = ['Redirect', 'Login', 'NoFind', 'Root']
+  const resetWhiteNameList = ['Redirect', 'Login', 'NoFind', 'Root', 'newLogin', 'DataView']
   router.getRoutes().forEach((route) => {
     const { name } = route
     if (name && !resetWhiteNameList.includes(name as string)) {
