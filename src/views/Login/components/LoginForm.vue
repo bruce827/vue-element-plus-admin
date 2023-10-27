@@ -267,6 +267,7 @@ const toRegister = () => {
 }
 
 onMounted(() => {
+  // 自动登陆
   signIn()
 })
 </script>
