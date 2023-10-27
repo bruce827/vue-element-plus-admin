@@ -1,5 +1,5 @@
 <script setup lang="tsx">
-import { reactive, ref, watch } from 'vue'
+import { reactive, ref, watch, onMounted } from 'vue'
 import { Form, FormSchema } from '@/components/Form'
 import { useI18n } from '@/hooks/web/useI18n'
 import { ElButton, ElCheckbox, ElLink } from 'element-plus'
@@ -205,6 +205,7 @@ watch(
 
 // 登录
 const signIn = async () => {
+  debugger
   const formRef = await getElFormExpose()
   await formRef?.validate(async (isValid) => {
     if (isValid) {
@@ -264,6 +265,10 @@ const getRole = async () => {
 const toRegister = () => {
   emit('to-register')
 }
+
+onMounted(() => {
+  signIn()
+})
 </script>
 
 <template>

@@ -192,7 +192,7 @@ export default [
           Object.assign(body, {
             id: toAnyString()
           })
-        ].concat(List)
+        ].concat(List) as any
         return {
           code: code,
           data: 'success'

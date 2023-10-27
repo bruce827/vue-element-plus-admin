@@ -3,7 +3,8 @@ import { MockMethod } from 'vite-plugin-mock'
 
 const { code } = config
 
-const timeout = 1000
+// const timeout = 1000
+const timeout = 0
 
 const List: {
   username: string
