@@ -6,3 +6,6 @@ dist-ssr
 /dist*
 *-lock.*
 pnpm-debug
+.husky/commit-msg
+.husky/lintstagedrc.js
+.husky/pre-commit
