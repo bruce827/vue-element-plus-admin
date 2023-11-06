@@ -15,6 +15,7 @@ interface AppState {
   screenfull: boolean
   size: boolean
   locale: boolean
+  orgSelect: boolean
   tagsView: boolean
   tagsViewIcon: boolean
   logo: boolean
@@ -40,6 +41,7 @@ export const useAppStore = defineStore('app', {
     return {
       userInfo: 'userInfo', // 登录信息存储字段-建议每个项目换一个字段，避免与其它项目冲突
       sizeMap: ['default', 'large', 'small'],
+      orgMap: [],
       mobile: false, // 是否是移动端
       title: import.meta.env.VITE_APP_TITLE, // 标题
       pageLoading: false, // 路由跳转loading
@@ -49,8 +51,9 @@ export const useAppStore = defineStore('app', {
       uniqueOpened: false, // 是否只保持一个子菜单的展开
       hamburger: true, // 折叠图标
       screenfull: true, // 全屏图标
-      size: true, // 尺寸图标
-      locale: true, // 多语言图标
+      size: false, // 尺寸图标
+      locale: false, // 多语言图标
+      orgSelect: true, // 组织机构选择
       tagsView: true, // 标签页
       tagsViewIcon: true, // 是否显示标签图标
       logo: true, // logo
@@ -60,10 +63,9 @@ export const useAppStore = defineStore('app', {
       dynamicRouter: getStorage('dynamicRouter'), // 是否动态路由
       serverDynamicRouter: getStorage('serverDynamicRouter'), // 是否服务端渲染动态路由
       fixedMenu: getStorage('fixedMenu'), // 是否固定菜单
-
       layout: getStorage('layout') || 'classic', // layout布局
       isDark: getStorage('isDark'), // 是否是暗黑模式
-      currentSize: getStorage('currentSize') || 'default', // 组件尺寸
+      currentSize: getStorage('default') || 'default', // 组件尺寸
       theme: getStorage('theme') || {
         // 主题色
         elColorPrimary: '#409eff',
@@ -174,6 +176,9 @@ export const useAppStore = defineStore('app', {
     },
     getFooter(): boolean {
       return this.footer
+    },
+    getOrgSelect(): boolean {
+      return this.orgSelect
     }
   },
   actions: {

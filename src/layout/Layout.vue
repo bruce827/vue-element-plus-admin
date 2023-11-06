@@ -54,12 +54,9 @@ export default defineComponent({
             onClick={handleClickOutside}
           ></div>
         ) : undefined}
-
         {renderLayout()}
-
         <Backtop></Backtop>
-
-        <Setting></Setting>
+        {/* // <Setting></Setting> */}
       </section>
     )
   }

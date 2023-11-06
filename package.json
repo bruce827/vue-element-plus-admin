@@ -1,8 +1,8 @@
 {
-  "name": "vue-element-plus-admin",
+  "name": "robot-inspection",
   "version": "2.3.0",
-  "description": "一套基于vue3、element-plus、typesScript、vite4的后台集成方案。",
-  "author": "Archer <502431556@qq.com>",
+  "description": "机器人巡检平台",
+  "author": "bruce",
   "private": false,
   "scripts": {
     "i": "pnpm install",
@@ -116,14 +116,5 @@
   },
   "engines": {
     "node": ">= 16.13.0"
-  },
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kailong321200875/vue-element-plus-admin.git"
-  },
-  "bugs": {
-    "url": "https://github.com/kailong321200875/vue-element-plus-admin/issues"
-  },
-  "homepage": "https://github.com/kailong321200875/vue-element-plus-admin"
+  }
 }

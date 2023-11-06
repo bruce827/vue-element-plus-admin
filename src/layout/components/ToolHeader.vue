@@ -3,6 +3,7 @@ import { defineComponent, computed } from 'vue'
 import { Collapse } from '@/components/Collapse'
 import { LocaleDropdown } from '@/components/LocaleDropdown'
 import { SizeDropdown } from '@/components/SizeDropdown'
+import { OrgSelect } from '@/components/OrgSelect'
 import { UserInfo } from '@/components/UserInfo'
 import { Screenfull } from '@/components/Screenfull'
 import { Breadcrumb } from '@/components/Breadcrumb'
@@ -32,6 +33,9 @@ const layout = computed(() => appStore.getLayout)
 
 // 多语言图标
 const locale = computed(() => appStore.getLocale)
+
+// 组织机构选择
+const orgSelect = computed(() => appStore.getOrgSelect)
 
 export default defineComponent({
   name: 'ToolHeader',
@@ -65,6 +69,9 @@ export default defineComponent({
               class="custom-hover"
               color="var(--top-header-text-color)"
             ></LocaleDropdown>
+          ) : undefined}
+          {orgSelect.value ? (
+            <OrgSelect class="custom-hover" color="var(--top-header-text-color)"></OrgSelect>
           ) : undefined}
           <UserInfo></UserInfo>
         </div>
