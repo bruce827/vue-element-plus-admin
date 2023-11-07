@@ -5,23 +5,24 @@ const { t } = useI18n()
 
 export const lineOptions: EChartsOption = {
   title: {
-    text: t('analysis.monthlySales'),
+    text: '充电房实况',
     left: 'center'
   },
   xAxis: {
     data: [
-      t('analysis.january'),
-      t('analysis.february'),
-      t('analysis.march'),
-      t('analysis.april'),
-      t('analysis.may'),
-      t('analysis.june'),
-      t('analysis.july'),
-      t('analysis.august'),
-      t('analysis.september'),
-      t('analysis.october'),
-      t('analysis.november'),
-      t('analysis.december')
+      '10-28 18:23',
+      '10-29 08:11',
+      '10-29 10:29',
+      '10-29 12:23',
+      '10-29 14:23',
+      '10-29 16:44',
+      '10-29 18:34',
+      '10-29 20:19',
+      '10-29 22:09',
+      '10-30 00:11',
+      '10-30 02:23',
+      '10-30 04:23',
+      '10-30 06:23'
     ],
     boundaryGap: false,
     axisTick: {
@@ -42,18 +43,28 @@ export const lineOptions: EChartsOption = {
     },
     padding: [5, 10]
   },
-  yAxis: {
-    axisTick: {
-      show: false
+  yAxis: [
+    {
+      name: '电流(A)',
+      axisTick: {
+        show: false
+      }
+    },
+    {
+      name: '电压(v)',
+
+      axisTick: {
+        show: false
+      }
     }
-  },
+  ],
   legend: {
     data: [t('analysis.estimate'), t('analysis.actual')],
     top: 50
   },
   series: [
     {
-      name: t('analysis.estimate'),
+      name: '电流',
       smooth: true,
       type: 'line',
       data: [100, 120, 161, 134, 105, 160, 165, 114, 163, 185, 118, 123],
@@ -61,7 +72,8 @@ export const lineOptions: EChartsOption = {
       animationEasing: 'cubicInOut'
     },
     {
-      name: t('analysis.actual'),
+      yAxisIndex: 1,
+      name: '电压',
       smooth: true,
       type: 'line',
       itemStyle: {},
@@ -81,6 +93,7 @@ export const pieOptions: EChartsOption = {
     trigger: 'item',
     formatter: '{a} <br/>{b} : {c} ({d}%)'
   },
+  color: ['#FB9A0E', '#30A46C'],
   legend: {
     orient: 'vertical',
     left: 'left',
@@ -111,9 +124,11 @@ export const pieOptions: EChartsOption = {
 
 export const barOptions: EChartsOption = {
   title: {
-    text: t('analysis.weeklyUserActivity'),
+    text: '机器人运行时间统计',
+    subtext: '周期(7天)',
     left: 'center'
   },
+  color: ['#FB9A0E', '#30A46C'],
   tooltip: {
     trigger: 'axis',
     axisPointer: {
@@ -141,12 +156,18 @@ export const barOptions: EChartsOption = {
     }
   },
   yAxis: {
-    type: 'value'
+    type: 'value',
+    name: 'min'
   },
   series: [
     {
-      name: t('analysis.activeQuantity'),
+      name: '充电时间',
       data: [13253, 34235, 26321, 12340, 24643, 1322, 1324],
+      type: 'bar'
+    },
+    {
+      name: '运行时间',
+      data: [253, 235, 321, 2340, 2464, 22, 13],
       type: 'bar'
     }
   ]

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>电,闪电,电力,电量</title>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="画板" transform="translate(-190, -63)" fill="#FB9A0E" fill-rule="nonzero">
+            <g id="电,闪电,电力,电量" transform="translate(190, 63)">
+                <rect id="矩形" opacity="0" x="0" y="0" width="32" height="32"></rect>
+                <path d="M24.103125,14.55625 L8,32 L12.690625,17.928125 C12.74375,17.765625 12.625,17.6 12.453125,17.6 L7.90625,17.6 C6.453125,17.6 5.484375,16.096875 6.084375,14.771875 L12.265625,1.171875 C12.590625,0.459375 13.303125,0 14.0875,0 L27.2,0 L21.015625,10.825 C20.921875,10.990625 21.040625,11.2 21.23125,11.2 L22.63125,11.2 C24.375,11.2 25.284375,13.275 24.103125,14.55625 Z" id="路径"></path>
+            </g>
+        </g>
+    </g>
+</svg>

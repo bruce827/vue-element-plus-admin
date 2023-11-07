@@ -10,7 +10,7 @@ export const constantRouterMap: AppRouteRecordRaw[] = [
   {
     path: '/',
     component: Layout,
-    redirect: '/dashboard/homeMonitoring',
+    redirect: '/dashboard/analysis',
     name: 'Root',
     meta: {
       hidden: true
@@ -59,7 +59,7 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
   {
     path: '/dashboard',
     component: Layout,
-    redirect: '/dashboard/homeMonitoring',
+    redirect: '/dashboard/analysis',
     name: 'Dashboard',
     meta: {
       title: '数据看板',
@@ -68,176 +68,22 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
     },
     children: [
       {
-        path: 'homeMonitoring',
-        component: () => import('@/views/Dashboard/HomeMonitoring.vue'),
+        path: 'analysis',
+        component: () => import('@/views/Dashboard/Analysis.vue'),
         name: 'Analysis',
         meta: {
-          title: '实时状态',
+          title: t('router.analysis'),
           noCache: true,
           affix: true
         }
-      }
-    ]
-  },
-  {
-    path: '/inspection-manager',
-    component: Layout,
-    meta: {
-      title: '巡检管理',
-      icon: 'material-symbols:frame-inspect',
-      alwaysShow: true
-    },
-    name: 'InspectionManager',
-    children: [
-      {
-        path: '/auto-inspection',
-        name: 'AutoInspection',
-        meta: {
-          title: '自动巡检管理'
-        }
       },
       {
-        path: '/inspection-calendar',
-        name: 'InspectionCalendar',
+        path: 'workplace',
+        component: () => import('@/views/Dashboard/Workplace.vue'),
+        name: 'Workplace',
         meta: {
-          title: '巡检日历'
-        }
-      },
-      {
-        path: '/inspection-log',
-        name: 'InspectionLog',
-        meta: {
-          title: '巡检日志'
-        }
-      },
-      {
-        path: '/inspection-result',
-        name: 'InspectionResult',
-        meta: {
-          title: '巡检结果'
-        }
-      }
-    ]
-  },
-  {
-    path: '/report',
-    component: Layout,
-    meta: {
-      title: '智能报表',
-      icon: 'tabler:report',
-      alwaysShow: true
-    },
-    name: 'Report',
-    children: [
-      {
-        path: '/mission-report',
-        name: 'MissionReport',
-        meta: {
-          title: '巡检任务统计'
-        }
-      },
-      {
-        path: '/result-report',
-        name: 'ResultReport',
-        meta: {
-          title: '巡检结果统计'
-        }
-      },
-      {
-        path: '/dally-report',
-        name: 'DallyReport',
-        meta: {
-          title: '巡检日报'
-        }
-      }
-    ]
-  },
-  {
-    path: '/equipment-manager',
-    component: Layout,
-    meta: {
-      title: '设备台账管理',
-      icon: 'carbon:book',
-      alwaysShow: true
-    },
-    name: 'EquipmentManager',
-    children: [
-      {
-        path: '/charging-room',
-        name: 'ChargingRoom',
-        meta: {
-          title: '充电房管理'
-        }
-      },
-      {
-        path: '/robot',
-        name: 'robot',
-        meta: {
-          title: '机器人管理'
-        }
-      }
-    ]
-  },
-  {
-    path: '/repair',
-    component: Layout,
-    meta: {
-      title: '维修保养',
-      icon: 'game-icons:auto-repair',
-      alwaysShow: true
-    },
-    name: 'Repair',
-    children: [
-      {
-        path: '/records',
-        name: 'Records',
-        meta: {
-          title: '保养记录'
-        }
-      }
-    ]
-  },
-  {
-    path: '/authorization',
-    component: Layout,
-    redirect: '/authorization/user',
-    name: 'Authorization',
-    meta: {
-      title: t('router.authorization'),
-      icon: 'eos-icons:role-binding',
-      alwaysShow: true
-    },
-    children: [
-      {
-        path: 'department',
-        component: () => import('@/views/Authorization/Department/Department.vue'),
-        name: 'Department',
-        meta: {
-          title: t('router.department')
-        }
-      },
-      {
-        path: 'user',
-        component: () => import('@/views/Authorization/User/User.vue'),
-        name: 'User',
-        meta: {
-          title: t('router.user')
-        }
-      },
-      {
-        path: 'menu',
-        component: () => import('@/views/Authorization/Menu/Menu.vue'),
-        name: 'Menu',
-        meta: {
-          title: t('router.menuManagement')
-        }
-      },
-      {
-        path: 'role',
-        component: () => import('@/views/Authorization/Role/Role.vue'),
-        name: 'Role',
-        meta: {
-          title: t('router.role')
+          title: t('router.workplace'),
+          noCache: true
         }
       }
     ]
@@ -761,6 +607,51 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
         name: '500Demo',
         meta: {
           title: '500'
+        }
+      }
+    ]
+  },
+  {
+    path: '/authorization',
+    component: Layout,
+    redirect: '/authorization/user',
+    name: 'Authorization',
+    meta: {
+      title: t('router.authorization'),
+      icon: 'eos-icons:role-binding',
+      alwaysShow: true
+    },
+    children: [
+      {
+        path: 'department',
+        component: () => import('@/views/Authorization/Department/Department.vue'),
+        name: 'Department',
+        meta: {
+          title: t('router.department')
+        }
+      },
+      {
+        path: 'user',
+        component: () => import('@/views/Authorization/User/User.vue'),
+        name: 'User',
+        meta: {
+          title: t('router.user')
+        }
+      },
+      {
+        path: 'menu',
+        component: () => import('@/views/Authorization/Menu/Menu.vue'),
+        name: 'Menu',
+        meta: {
+          title: t('router.menuManagement')
+        }
+      },
+      {
+        path: 'role',
+        component: () => import('@/views/Authorization/Role/Role.vue'),
+        name: 'Role',
+        meta: {
+          title: t('router.role')
         }
       }
     ]

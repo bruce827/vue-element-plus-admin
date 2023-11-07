@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>任务</title>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="画板" transform="translate(-31, -56)" fill-rule="nonzero">
+            <g id="任务" transform="translate(31, 56)">
+                <rect id="矩形" fill="#000000" opacity="0" x="0" y="0" width="32" height="32"></rect>
+                <path d="M4,0 L6,0 L6,4 C6,5.1045695 6.8954305,6 8,6 L24,6 C25.1045695,6 26,5.1045695 26,4 L26,0 L28,0 C30.209139,0 32,1.790861 32,4 L32,28 C32,30.209139 30.209139,32 28,32 L4,32 C1.790861,32 0,30.209139 0,28 L0,4 C0,1.790861 1.790861,0 4,0 Z M24.036,11.118 L14.538,20.616 L9.042,14.204 L6.764,16.156 L14.368,25.028 L26.156,13.24 L24.036,11.118 L24.036,11.118 Z M24,0 L24,2 C24,3.1045695 23.1045695,4 22,4 L10,4 C8.8954305,4 8,3.1045695 8,2 L8,0 L24,0 Z" id="形状" fill="#1677FF"></path>
+            </g>
+        </g>
+    </g>
+</svg>

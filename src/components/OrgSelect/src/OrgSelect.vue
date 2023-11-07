@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, unref } from 'vue'
 import { ElDropdown, ElDropdownMenu, ElDropdownItem, ComponentSize, ElCascader } from 'element-plus'
-import { useAppStore } from '@/store/modules/app'
-import { useI18n } from '@/hooks/web/useI18n'
+// import { useAppStore } from '@/store/modules/app'
+// import { useI18n } from '@/hooks/web/useI18n'
 import { propTypes } from '@/utils/propTypes'
 import { useDesign } from '@/hooks/web/useDesign'
 
@@ -14,282 +14,143 @@ defineProps({
   color: propTypes.string.def('')
 })
 
-const { t } = useI18n()
+// const { t } = useI18n()
 
-const appStore = useAppStore()
+// const appStore = useAppStore()
 
-const sizeMap = computed(() => appStore.sizeMap)
+// const sizeMap = computed(() => appStore.sizeMap)
 
-const setCurrentSize = (size: ComponentSize) => {
-  appStore.setCurrentSize(size)
-}
+// const setCurrentSize = (size: ComponentSize) => {
+//   appStore.setCurrentSize(size)
+// }
+const currentOrg = unref<Array<string>>(['大港油田', '第五采油厂', '西二联合站'])
 const props1 = {
   checkStrictly: true
 }
 const options = [
   {
-    value: 'guide',
-    label: 'Guide',
+    value: '大港油田',
+    label: '大港油田',
     children: [
       {
-        value: 'disciplines',
-        label: 'Disciplines',
+        value: '天津储气库分公司',
+        label: '天津储气库分公司',
         children: [
           {
-            value: 'consistency',
-            label: 'Consistency'
-          },
-          {
-            value: 'feedback',
-            label: 'Feedback'
-          },
-          {
-            value: 'efficiency',
-            label: 'Efficiency'
-          },
-          {
-            value: 'controllability',
-            label: 'Controllability'
+            value: '驴驹河储气库',
+            label: '驴驹河储气库'
           }
         ]
       },
       {
-        value: 'navigation',
-        label: 'Navigation',
+        value: '原油运销公司',
+        label: '原油运销公司',
         children: [
           {
-            value: 'side nav',
-            label: 'Side Navigation'
-          },
-          {
-            value: 'top nav',
-            label: 'Top Navigation'
-          }
-        ]
-      }
-    ]
-  },
-  {
-    value: 'component',
-    label: 'Component',
-    children: [
-      {
-        value: 'basic',
-        label: 'Basic',
-        children: [
-          {
-            value: 'layout',
-            label: 'Layout'
-          },
-          {
-            value: 'color',
-            label: 'Color'
-          },
-          {
-            value: 'typography',
-            label: 'Typography'
-          },
-          {
-            value: 'icon',
-            label: 'Icon'
-          },
-          {
-            value: 'button',
-            label: 'Button'
+            value: '油泥沙处理站',
+            label: '油泥沙处理站'
           }
         ]
       },
       {
-        value: 'form',
-        label: 'Form',
+        value: '第一采油厂',
+        label: '第一采油厂',
         children: [
           {
-            value: 'radio',
-            label: 'Radio'
+            value: '港东联合站',
+            label: '港东联合站'
           },
           {
-            value: 'checkbox',
-            label: 'Checkbox'
-          },
-          {
-            value: 'input',
-            label: 'Input'
-          },
-          {
-            value: 'input-number',
-            label: 'InputNumber'
-          },
-          {
-            value: 'select',
-            label: 'Select'
-          },
-          {
-            value: 'cascader',
-            label: 'Cascader'
-          },
-          {
-            value: 'switch',
-            label: 'Switch'
-          },
-          {
-            value: 'slider',
-            label: 'Slider'
-          },
-          {
-            value: 'time-picker',
-            label: 'TimePicker'
-          },
-          {
-            value: 'date-picker',
-            label: 'DatePicker'
-          },
-          {
-            value: 'datetime-picker',
-            label: 'DateTimePicker'
-          },
-          {
-            value: 'upload',
-            label: 'Upload'
-          },
-          {
-            value: 'rate',
-            label: 'Rate'
-          },
-          {
-            value: 'form',
-            label: 'Form'
+            value: '马西联合站',
+            label: '马西联合站'
           }
         ]
       },
       {
-        value: 'data',
-        label: 'Data',
+        value: '第二采油厂',
+        label: '第二采油厂',
         children: [
           {
-            value: 'table',
-            label: 'Table'
+            value: '庄一联合站',
+            label: '庄一联合站'
           },
           {
-            value: 'tag',
-            label: 'Tag'
-          },
-          {
-            value: 'progress',
-            label: 'Progress'
-          },
-          {
-            value: 'tree',
-            label: 'Tree'
-          },
-          {
-            value: 'pagination',
-            label: 'Pagination'
-          },
-          {
-            value: 'badge',
-            label: 'Badge'
+            value: '南一联合站',
+            label: '南一联合站'
           }
         ]
       },
       {
-        value: 'notice',
-        label: 'Notice',
+        value: '第三采油厂',
+        label: '第三采油厂',
         children: [
           {
-            value: 'alert',
-            label: 'Alert'
+            value: '女一联合站',
+            label: '女一联合站'
           },
           {
-            value: 'loading',
-            label: 'Loading'
+            value: '官一联合站',
+            label: '官一联合站'
           },
           {
-            value: 'message',
-            label: 'Message'
+            value: '官二联合站',
+            label: '官二联合站'
           },
           {
-            value: 'message-box',
-            label: 'MessageBox'
+            value: '段一联合站',
+            label: '段一联合站'
           },
           {
-            value: 'notification',
-            label: 'Notification'
+            value: '小一联合站',
+            label: '小一联合站'
+          },
+          {
+            value: '枣一联合站',
+            label: '枣一联合站'
+          },
+          {
+            value: '枣二联合站',
+            label: '枣二联合站'
           }
         ]
       },
       {
-        value: 'navigation',
-        label: 'Navigation',
+        value: '第四采油厂',
+        label: '第四采油厂',
         children: [
           {
-            value: 'menu',
-            label: 'Menu'
-          },
-          {
-            value: 'tabs',
-            label: 'Tabs'
-          },
-          {
-            value: 'breadcrumb',
-            label: 'Breadcrumb'
-          },
-          {
-            value: 'dropdown',
-            label: 'Dropdown'
-          },
-          {
-            value: 'steps',
-            label: 'Steps'
+            value: '板一联合站',
+            label: '板一联合站'
           }
         ]
       },
       {
-        value: 'others',
-        label: 'Others',
+        value: '第五采油厂',
+        label: '第五采油厂',
         children: [
           {
-            value: 'dialog',
-            label: 'Dialog'
+            value: '西一联合站',
+            label: '西一联合站'
           },
           {
-            value: 'tooltip',
-            label: 'Tooltip'
-          },
-          {
-            value: 'popover',
-            label: 'Popover'
-          },
-          {
-            value: 'card',
-            label: 'Card'
-          },
-          {
-            value: 'carousel',
-            label: 'Carousel'
-          },
-          {
-            value: 'collapse',
-            label: 'Collapse'
+            value: '西二联合站',
+            label: '西二联合站'
           }
         ]
-      }
-    ]
-  },
-  {
-    value: 'resource',
-    label: 'Resource',
-    children: [
-      {
-        value: 'axure',
-        label: 'Axure Components'
       },
       {
-        value: 'sketch',
-        label: 'Sketch Templates'
-      },
-      {
-        value: 'docs',
-        label: 'Design Documentation'
+        value: '第六采油厂',
+        label: '第六采油厂',
+        children: [
+          {
+            value: '孔店联合站',
+            label: '孔店联合站'
+          },
+          {
+            value: '羊中心站',
+            label: '羊中心站'
+          }
+        ]
       }
     ]
   }
@@ -308,7 +169,14 @@ const options = [
     </template>
   </ElDropdown> -->
   <div class="org-container">
-    <ElCascader :class="prefixCls" :options="options" :props="props1" clearable />
+    <ElCascader
+      :class="prefixCls"
+      :options="options"
+      :props="props1"
+      placeholder="请选择管理组"
+      v-model="currentOrg"
+      fit-input-width
+    />
   </div>
 </template>
 <style lang="less" scoped>
@@ -316,5 +184,10 @@ const options = [
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 280px;
+
+  & /deep/ .el-cascader {
+    width: 100%;
+  }
 }
 </style>
