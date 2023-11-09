@@ -34,6 +34,11 @@ import App from './App.vue'
 
 import './permission'
 
+// 直播视频流插件
+// https://codelife.cc/vue3-video-play/
+import vue3videoPlay from 'vue3-video-play' // 引入组件
+import 'vue3-video-play/dist/style.css' // 引入css
+
 // 创建实例
 const setupAll = async () => {
   const app = createApp(App)
@@ -49,6 +54,8 @@ const setupAll = async () => {
   setupRouter(app)
 
   setupPermission(app)
+
+  app.use(vue3videoPlay)
 
   app.mount('#app')
 }
