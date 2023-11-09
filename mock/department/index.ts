@@ -7,7 +7,15 @@ const { code } = config
 
 const departmentList: any = []
 
-const citys = ['厦门总公司', '北京分公司', '上海分公司', '福州分公司', '深圳分公司', '杭州分公司']
+const citys = [
+  '天津储气库分公司',
+  '原油运销公司',
+  '第一采油厂',
+  '第二采油厂',
+  '第三采油厂',
+  '第四采油厂',
+  '第五采油厂'
+]
 
 for (let i = 0; i < 5; i++) {
   departmentList.push({

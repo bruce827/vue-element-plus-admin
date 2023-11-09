@@ -22,3 +22,26 @@ All notable changes to this project will be documented in this file. See [standa
 ### Performance Improvements
 
 无
+
+## [V0.0.9] (2023-11-08) 原型
+
+### Features
+无
+
+### Bug Fixes
+
+无
+
+### Docs
+
+- 项目范围文档v0.9
+- 项目计划v0.5
+
+### Performance Improvements
+
+- 自动登陆
+- 巡检管理
+- 智能报表
+- 设备台账管理
+- 维修保养
+- 权限管理

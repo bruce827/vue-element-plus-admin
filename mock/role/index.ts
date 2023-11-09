@@ -688,7 +688,8 @@ const testList: string[] = [
 
 const List: any[] = []
 
-const roleNames = ['超级管理员', '管理员', '普通用户', '游客']
+const roleNames = ['超级管理员', '管理员', '统计人员', '三方系统对接']
+const role = ['gsman', 'admin', 'user', 'third']
 const menus = [
   [
     {
@@ -1100,7 +1101,7 @@ for (let i = 0; i < 4; i++) {
       id: toAnyString(),
       // timestamp: +Mock.Random.date('T'),
       roleName: roleNames[i],
-      role: '@first',
+      role: role[i],
       status: Mock.Random.integer(0, 1),
       createTime: '@datetime',
       remark: '@cword(10, 15)',

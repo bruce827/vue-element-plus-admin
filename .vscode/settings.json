@@ -5,7 +5,7 @@
     "source.fixAll.eslint": true
   },
   "[vue]": {
-    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+    "editor.defaultFormatter": "Wscats.vue"
   },
   "i18n-ally.localesPaths": ["src/locales"],
   "i18n-ally.keystyle": "nested",
@@ -18,6 +18,8 @@
   "god.tsconfig": "./tsconfig.json",
   "cSpell.ignoreWords": [
     "Cascader",
+    "datetime",
+    "echarts",
     "robotInspection",
     "unref"
   ]
