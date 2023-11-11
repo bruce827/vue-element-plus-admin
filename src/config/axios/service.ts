@@ -5,6 +5,7 @@ import { AxiosInstance, InternalAxiosRequestConfig, RequestConfig, AxiosResponse
 import { ElMessage } from 'element-plus'
 
 const { interceptors, baseUrl } = config
+// 在config文件中配置api前缀，在env文件中配置环境
 export const PATH_URL = baseUrl[import.meta.env.VITE_API_BASE_PATH]
 
 const { requestInterceptors, responseInterceptors } = interceptors

@@ -199,7 +199,7 @@ getAllApi()
           <template #header>
             <div class="card-header">
               <span>巡检任务执行数量统计</span>
-              <el-checkbox-group v-model="checkboxGroup" size="small">
+              <!-- <el-checkbox-group v-model="checkboxGroup" size="small">
                 <el-checkbox-button
                   v-for="city in cities"
                   :key="city"
@@ -207,7 +207,7 @@ getAllApi()
                   :disabled="city === 'Beijing'"
                   >{{ city }}</el-checkbox-button
                 >
-              </el-checkbox-group>
+              </el-checkbox-group> -->
             </div>
           </template>
           <!-- <ElSkeleton :loading="true" animated> -->
@@ -220,11 +220,11 @@ getAllApi()
           <template #header>
             <div class="card-header">
               <span>巡检任务耗时统计</span>
-              <el-checkbox-group v-model="checkboxGroup" size="small">
+              <!-- <el-checkbox-group v-model="checkboxGroup" size="small">
                 <el-checkbox-button v-for="city in cities" :key="city" :label="city">{{
                   city
                 }}</el-checkbox-button>
-              </el-checkbox-group>
+              </el-checkbox-group> -->
             </div>
           </template>
           <!-- <ElSkeleton :loading="true" animated> -->

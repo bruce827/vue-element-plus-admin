@@ -6,6 +6,9 @@ import {
 } from './types'
 import { ElMessage } from 'element-plus'
 import qs from 'qs'
+import { useStorage } from '@/hooks/web/useStorage'
+
+const { getStorage } = useStorage()
 
 const config: AxiosConfig = {
   /**
@@ -54,6 +57,13 @@ const config: AxiosConfig = {
 }
 
 const defaultRequestInterceptors = (config: InternalAxiosRequestConfig) => {
+  const token = getStorage('token')
+  const { userName } = getStorage('userInfo') || ''
+  if (token && userName) {
+    // 与后台约定header
+    ;(config.headers as AxiosRequestHeaders)['token'] = userInfo.token
+    ;(config.headers as AxiosRequestHeaders)['userName'] = userInfo?.userName
+  }
   if (
     config.method === 'post' &&
     (config.headers as AxiosRequestHeaders)['Content-Type'] === 'application/x-www-form-urlencoded'

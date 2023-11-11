@@ -45,3 +45,26 @@ All notable changes to this project will be documented in this file. See [standa
 - 设备台账管理
 - 维修保养
 - 权限管理
+
+## [V0.1.0] (2023-11-11) 原型
+
+### Features
+无
+
+### Bug Fixes
+
+无
+
+### Docs
+
+- 项目范围文档v0.9
+- 项目计划v0.5
+
+### Performance Improvements
+
+- 数据看板
+- 接口日志
+- 视频切换
+- 告警信息
+- 巡检路线
+- 智能报表查询

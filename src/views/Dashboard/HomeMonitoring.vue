@@ -10,7 +10,10 @@ import {
   ElOption,
   ElDescriptions,
   ElDescriptionsItem,
-  ElSkeleton
+  ElSkeleton,
+  ElTable,
+  ElTableColumn,
+  ElImage
 } from 'element-plus'
 import { Echart } from '@/components/Echart'
 import {
@@ -21,7 +24,7 @@ import {
 import { set } from 'lodash-es'
 import { EChartsOption } from 'echarts'
 import { pieOptions, barOptions, lineOptions } from './echarts-data'
-
+import mapImg from '@/assets/demo/map.png'
 import { useI18n } from '@/hooks/web/useI18n'
 
 const value = ref<string>('机器人1')
@@ -124,6 +127,37 @@ const getMonthlySales = async () => {
   }
 }
 
+const tableData = [
+  {
+    date: '2016-05-03 19:22:11',
+    name: '阈值报警',
+    level: '1级',
+    obj: '读表',
+    address: '24.8,高报。'
+  },
+  {
+    date: '2016-05-02 19:22:11',
+    name: '阈值报警',
+    level: '1级',
+    obj: '读表',
+    address: '24.8,高报。'
+  },
+  {
+    date: '2016-05-04 19:22:11',
+    name: '阈值报警',
+    level: '1级',
+    obj: '普通拍照',
+    address: '24.8,高报。'
+  },
+  {
+    date: '2016-05-01 19:22:11',
+    name: '阈值报警',
+    level: '1级',
+    obj: '读表',
+    address: '24.8,高报。'
+  }
+]
+
 const getAllApi = async () => {
   await Promise.all([getUserAccessSource(), getWeeklyUserActivity(), getMonthlySales()])
   loading.value = false
@@ -151,22 +185,24 @@ getAllApi()
   <ElRow :gutter="20" justify="space-between">
     <ElCol :xl="10" :lg="10" :md="24" :sm="24" :xs="24">
       <ElCard shadow="hover" class="mb-20px">
-        <!-- <ElSkeleton :loading="true" animated> -->
-        <!-- <img src="@/assets/imgs/robot.png" alt="" /> -->
-        <div class="monitor-video">
-          <div class="desc">
-            <ElDescriptions title="机器人实况">
-              <ElDescriptionsItem label="当前模式">离线</ElDescriptionsItem>
-              <ElDescriptionsItem label="当前电量">68%</ElDescriptionsItem>
-              <ElDescriptionsItem label="当前状态">巡检中</ElDescriptionsItem>
-              <ElDescriptionsItem label="当前任务">
-                <el-tag size="small">泵房巡检</el-tag>
-              </ElDescriptionsItem>
-              <ElDescriptionsItem label="信号强度">强</ElDescriptionsItem>
-            </ElDescriptions>
-          </div>
+        <div class="video-container">
+          <div class="monitor-video"></div>
+          <div class="monitor-video"></div>
+          <div class="monitor-video"></div>
+          <div class="monitor-video">
+            <div class="desc">
+              <ElDescriptions title="机器人实况">
+                <ElDescriptionsItem label="当前模式">离线</ElDescriptionsItem>
+                <ElDescriptionsItem label="当前电量">68%</ElDescriptionsItem>
+                <ElDescriptionsItem label="当前状态">巡检中</ElDescriptionsItem>
+                <ElDescriptionsItem label="当前任务">
+                  <el-tag size="small">泵房巡检</el-tag>
+                </ElDescriptionsItem>
+                <ElDescriptionsItem label="信号强度">强</ElDescriptionsItem>
+              </ElDescriptions>
+            </div></div
+          >
         </div>
-        <!-- </ElSkeleton> -->
       </ElCard>
     </ElCol>
     <ElCol :xl="14" :lg="14" :md="24" :sm="24" :xs="24">
@@ -177,28 +213,52 @@ getAllApi()
       </ElCard>
     </ElCol>
     <ElCol :span="24">
+      <ElCard shadow="hover" class="mb-20px" header="巡检地图">
+        <ElSkeleton :loading="loading" animated :rows="4">
+          <ElImage :src="mapImg" fit="fill" />
+        </ElSkeleton>
+      </ElCard>
+    </ElCol>
+    <ElCol :span="12">
+      <ElCard shadow="hover" class="mb-20px" header="巡检告警通知">
+        <ElSkeleton :loading="loading" animated :rows="4">
+          <el-table :data="tableData" stripe style="width: 100%">
+            <el-table-column prop="date" label="告警时间" width="180" />
+            <el-table-column prop="name" label="判断类型" width="180" />
+            <el-table-column prop="level" label="等级" />
+            <el-table-column prop="obj" label="采集项" />
+            <el-table-column prop="address" label="告警内容" />
+          </el-table>
+        </ElSkeleton>
+      </ElCard>
+    </ElCol>
+    <ElCol :span="12">
       <ElCard shadow="hover" class="mb-20px">
         <ElSkeleton :loading="loading" animated :rows="4">
-          <Echart :options="lineOptionsData" :height="200" />
+          <Echart :options="lineOptionsData" height="260px" />
         </ElSkeleton>
       </ElCard>
     </ElCol>
   </ElRow>
 </template>
 <style lang="less" scoped>
+.video-container {
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+}
 .monitor-video {
   position: relative;
   display: flex;
-  height: 400px;
+  height: 200px;
+  // width: 45%;
   background-image: url('@/assets/imgs/robot.png');
   background-size: cover;
-
-  .desc {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    background-color: transparent;
-    opacity: 0.65;
-  }
+}
+.desc {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: transparent;
+  opacity: 0.65;
 }
 </style>

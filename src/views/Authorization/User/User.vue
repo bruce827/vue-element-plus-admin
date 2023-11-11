@@ -160,9 +160,9 @@ const crudSchemas = reactive<CrudSchema[]>([
               <ElButton type="success" onClick={() => action(row, 'detail')}>
                 {t('exampleDemo.detail')}
               </ElButton>
-              {/*  <ElButton type="danger" onClick={() => delData(row)}>
-               {t('exampleDemo.del')}
-               </ElButton> */}
+              <ElButton type="danger" onClick={() => delData(row)}>
+                {t('exampleDemo.del')}
+              </ElButton>
             </>
           )
         }
@@ -307,13 +307,12 @@ const save = async () => {
         @reset="setSearchParams"
         @search="setSearchParams"
       />
-
-      <!-- <div class="mb-10px">
+      <div class="mb-10px">
         <ElButton type="primary" @click="AddAction">{{ t('exampleDemo.add') }}</ElButton>
         <ElButton :loading="delLoading" type="danger" @click="delData()">
           {{ t('exampleDemo.del') }}
         </ElButton>
-      </div> -->
+      </div>
       <Table
         v-model:current-page="currentPage"
         v-model:page-size="pageSize"

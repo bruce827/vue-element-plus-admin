@@ -77,6 +77,16 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
           noCache: true,
           affix: true
         }
+      },
+      {
+        path: 'total-view',
+        component: () => import('@/views/Dashboard/TotalView.vue'),
+        name: 'TotalView',
+        meta: {
+          title: '数据总览',
+          noCache: true,
+          affix: true
+        }
       }
     ]
   },
@@ -214,7 +224,7 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
     redirect: '/authorization/user',
     name: 'Authorization',
     meta: {
-      title: t('router.authorization'),
+      title: '系统配置',
       icon: 'eos-icons:role-binding',
       alwaysShow: true
     },
@@ -241,6 +251,14 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
         name: 'Role',
         meta: {
           title: t('router.role')
+        }
+      },
+      {
+        path: 'api-log',
+        component: () => import('@/views/Authorization/ApiLog/ApiLog.vue'),
+        name: 'ApiLog',
+        meta: {
+          title: '接口日志'
         }
       }
     ]
