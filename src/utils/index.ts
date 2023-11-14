@@ -120,3 +120,15 @@ export function toAnyString() {
 export function firstUpperCase(str: string) {
   return str.toLowerCase().replace(/( |^)[a-z]/g, (L) => L.toUpperCase())
 }
+/**
+ * @description 睡眠函数
+ * @param time
+ * @returns
+ */
+export function sleep(time) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve()
+    }, time)
+  })
+}

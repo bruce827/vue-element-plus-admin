@@ -30,6 +30,8 @@ import { defineComponent } from 'vue'
     canTo: true               设置为true即使hidden为true，也依然可以进行路由跳转(默认 false)
 
     permission: ['edit','add', 'delete']    设置该路由的权限
+
+    frameSrc: 'www.baidu.com'  内嵌网页
   }
 **/
 
@@ -45,6 +47,7 @@ interface RouteMetaCustom extends Record<string | number | symbol, unknown> {
   noTagsView?: boolean
   canTo?: boolean
   permission?: string[]
+  frameSrc?: string
 }
 
 declare module 'vue-router' {

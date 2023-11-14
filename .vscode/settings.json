@@ -20,7 +20,10 @@
     "Cascader",
     "datetime",
     "echarts",
+    "inksnkape",
     "robotInspection",
+    "svgs",
     "unref"
-  ]
+  ],
+  "vue3snippets.enable-compile-vue-file-on-did-save-code": false
 }

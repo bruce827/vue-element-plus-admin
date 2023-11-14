@@ -1,7 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import type { RouteRecordRaw } from 'vue-router'
 import type { App } from 'vue'
-import { Layout, getParentLayout } from '@/utils/routerHelper'
+import { Layout, getParentLayout, Iframe } from '@/utils/routerHelper'
 import { useI18n } from '@/hooks/web/useI18n'
 
 const { t } = useI18n()
@@ -91,12 +91,44 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
     ]
   },
   {
+    path: '/iframe-test',
+    component: Layout,
+    meta: {
+      title: 'frame测试',
+      icon: 'material-symbols:frame-inspect',
+      alwaysShow: true
+    },
+    name: 'IframeTest',
+    children: [
+      {
+        path: 'frame1',
+        name: 'Frame1',
+        component: Iframe,
+        meta: {
+          title: '测试1',
+          frameSrc:
+            'https://element-plus.org/zh-CN/component/skeleton.html#skeleton-%E5%B1%9E%E6%80%A7'
+        }
+      },
+      {
+        path: 'frame2',
+        name: 'Frame2',
+        component: Iframe,
+        meta: {
+          title: '测试2',
+          frameSrc: 'https://bruce827.github.io/portfolio/'
+        }
+      }
+    ]
+  },
+  {
     path: '/inspection-manager',
     component: Layout,
     meta: {
       title: '巡检管理',
       icon: 'material-symbols:frame-inspect',
-      alwaysShow: true
+      alwaysShow: true,
+      hidden: true
     },
     name: 'InspectionManager',
     children: [
@@ -140,7 +172,8 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
     meta: {
       title: '智能报表',
       icon: 'tabler:report',
-      alwaysShow: true
+      alwaysShow: true,
+      hidden: true
     },
     name: 'Report',
     children: [
@@ -259,6 +292,63 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
         name: 'ApiLog',
         meta: {
           title: '接口日志'
+        }
+      }
+    ]
+  },
+  {
+    path: '/demo',
+    component: Layout,
+    redirect: '/demo/svg-map',
+    meta: {
+      title: 'svg图片测试',
+      icon: 'teenyicons:svg-outline',
+      alwaysShow: true
+    },
+    children: [
+      {
+        path: 'svg-map',
+        component: () => import('@/views/Components/SvgMap.vue'),
+        name: 'SvgMap',
+        meta: {
+          title: '组态图'
+        }
+      }
+    ]
+  },
+  {
+    path: '/error',
+    component: Layout,
+    redirect: '/error/404',
+    name: 'Error',
+    meta: {
+      title: t('router.errorPage'),
+      icon: 'ci:error',
+      alwaysShow: true
+    },
+    children: [
+      {
+        path: '404-demo',
+        component: () => import('@/views/Error/404.vue'),
+        name: '404Demo',
+        meta: {
+          title: '404'
+        }
+      },
+      {
+        path: '403-demo',
+        component: () => import('@/views/Error/403.vue'),
+        name: '403Demo',
+        meta: {
+          title: '403'
+        }
+      },
+      {
+        path: '500-demo',
+        component: () => import('@/views/Error/500.vue'),
+        name: '500Demo',
+        meta: {
+          title: '500'
         }
       }
     ]

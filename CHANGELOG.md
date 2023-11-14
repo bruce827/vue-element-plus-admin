@@ -68,3 +68,23 @@ All notable changes to this project will be documented in this file. See [standa
 - 告警信息
 - 巡检路线
 - 智能报表查询
+
+## [V0.2.0] (2023-11-14) 框架搭建
+
+### Features
+
+- 内嵌iframe
+- 错误页面
+- svg实现
+
+### Bug Fixes
+
+无
+
+### Docs
+
+- 项目范围文档v0.9
+- 项目计划v0.5
+
+### Performance Improvements
+无

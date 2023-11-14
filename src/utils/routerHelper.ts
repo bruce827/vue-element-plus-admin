@@ -13,6 +13,9 @@ const modules = import.meta.glob('../views/**/*.{vue,tsx}')
 /* Layout */
 export const Layout = () => import('@/layout/Layout.vue')
 
+/* iframe */
+export const Iframe = () => import('@/components/Iframe/src/Iframe.vue')
+
 export const getParentLayout = () => {
   return () =>
     new Promise((resolve) => {
