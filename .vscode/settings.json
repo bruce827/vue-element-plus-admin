@@ -18,6 +18,7 @@
   "god.tsconfig": "./tsconfig.json",
   "cSpell.ignoreWords": [
     "Cascader",
+    "daterange",
     "datetime",
     "echarts",
     "inksnkape",

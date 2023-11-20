@@ -88,3 +88,21 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Performance Improvements
 无
+
+## [V0.2.1] (2023-11-20) 业务逻辑层demo
+
+### Features
+
+- 项目评估页面demo50%
+
+### Bug Fixes
+
+无
+
+### Docs
+
+- 项目范围文档v0.9
+- 项目计划v1.0
+
+### Performance Improvements
+- 组态图组件文档

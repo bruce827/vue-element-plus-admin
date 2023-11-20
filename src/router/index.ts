@@ -317,6 +317,35 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
     ]
   },
   {
+    path: '/project-evaluate',
+    component: Layout,
+    redirect: '/project-evaluate/svg-map',
+    meta: {
+      title: '新项目评估',
+      icon: 'file-icons:microsoft-project',
+      alwaysShow: true
+    },
+    children: [
+      {
+        path: 'new-form',
+        component: () => import('@/views/ProjectEvaluate/ProjectEvaluate.vue'),
+        name: 'ProjectEvaluate',
+        meta: {
+          title: '新项目评估'
+        }
+      },
+      {
+        path: 'module-info',
+        // component: () => import('@/views/Components/SvgMap.vue'),
+        name: 'ModuleInfo',
+        meta: {
+          title: '模块详情',
+          hidden: true
+        }
+      }
+    ]
+  },
+  {
     path: '/error',
     component: Layout,
     redirect: '/error/404',

@@ -1,0 +1,526 @@
+{
+    "projectPhaseOptions": [
+        {
+            "disabled": false,
+            "label": "实施",
+            "value": 0,
+            "num": 0
+        }, {
+            "disabled": false,
+            "label": "维护",
+            "value": 1,
+            "num": 3
+
+        }, {
+            "disabled": false,
+            "label": "规划",
+            "value": 2,
+            "num": 5
+
+        }, {
+            "disabled": false,
+            "label": "其它",
+            "value": 3,
+            "num": 0
+        }
+
+    ],
+    "proDuringOptions": [
+        {
+            "disabled": false,
+            "label": "1周之内",
+            "value": 0,
+            "num": 0
+        }, {
+            "disabled": false,
+            "label": "1个月之内",
+            "value": 1,
+            "num": 3
+
+        }, {
+            "disabled": false,
+            "label": "1-2个月",
+            "value": 2,
+            "num": 5
+
+        }, {
+            "disabled": false,
+            "label": "2个月以上",
+            "value": 3,
+            "num": 0
+        }, {
+            "disabled": false,
+            "label": "无法预估",
+            "value": 4,
+            "num": 0
+        }
+    ],
+    "reasonOptions": [
+        {
+            "disabled": false,
+            "label": "项目范围还没得到客户认可",
+            "value": 0,
+            "num": 0
+        }, {
+            "disabled": false,
+            "label": "没有找到合适的人干",
+            "value": 1,
+            "num": 0
+        }, {
+            "disabled": false,
+            "label": "一些功能需要详细调研",
+            "value": 2,
+            "num": 0
+        }, {
+            "disabled": false,
+            "label": "还在商务拉扯阶段",
+            "value": 7,
+            "num": 0
+        }
+    ],
+    "planOptions":[
+        {
+            "disabled": false,
+            "label": "不打算计划",
+            "value": 0,
+            "num": 0
+        },
+        {
+            "disabled": false,
+            "label": "没有计划",
+            "value": 1,
+            "num": 3
+        },
+        {
+            "disabled": false,
+            "label": "已经有计划",
+            "value": 2,
+            "num": 7
+        }
+    ],
+    "userGroupOptions": [
+        {
+            "disabled": false,
+            "label": "非大港项目",
+            "value": 0,
+            "num": 0
+        }, {
+            "disabled": false,
+            "label": "站库体系",
+            "value": 1,
+            "num": 3
+
+        }, {
+            "disabled": false,
+            "label": "作业区体系",
+            "value": 2,
+            "num": 5
+
+        }, {
+            "disabled": false,
+            "label": "其它类型",
+            "value": 7,
+            "num": 0
+        }
+    ],
+    "preSalesOptions": [
+        {
+            "disabled": false,
+            "label": "是",
+            "value": 0,
+            "num": 0
+        }, {
+            "disabled": false,
+            "label": "否",
+            "value": 1,
+            "num": 3
+
+        }, {
+            "disabled": false,
+            "label": "双方都不知道要什么",
+            "value": 2,
+            "num": 0
+
+        }
+    ],
+    "projectDeployOptions": [
+        {
+            "disabled": false,
+            "label": "基于场站",
+            "value": 0,
+            "num": 0
+        }, {
+            "disabled": false,
+            "label": "基于数字化交付",
+            "value": 1,
+            "num": 0
+        }, {
+            "disabled": false,
+            "label": "基于其它已有项目",
+            "value": 2,
+            "num": 3
+
+        }, {
+            "disabled": false,
+            "label": "新项目独立部署",
+            "value": 3,
+            "num": 5
+        }
+    ],
+    "experienceOptions": [
+        {
+            "disabled": false,
+            "label": "没有参照",
+            "value": 0,
+            "num": 0
+        }, {
+            "disabled": false,
+            "label": "自己的项目",
+            "value": 2,
+            "num": 3
+
+        }, {
+            "disabled": false,
+            "label": "别的项目,不能操作",
+            "value": 3,
+            "num": 5
+        }
+    ],
+    "acceptanceCheckOptions": [
+        {
+            "disabled": false,
+            "label": "代码审计",
+            "value": 1,
+            "num": 0
+
+        }, {
+            "disabled": false,
+            "label": "两化融合",
+            "value": 2,
+            "num": 0
+        }, {
+            "disabled": false,
+            "label": "第三方监理",
+            "value": 3,
+            "num": 0
+        }, {
+            "disabled": false,
+            "label": "其它部门推广",
+            "value": 4,
+            "num": 0
+        }
+    ],
+    "businessProblemOptions": [
+        {
+            "disabled": false,
+            "label": "遗留项目掺杂",
+            "value": 0,
+            "num": 0
+        }, {
+            "disabled": false,
+            "label": "之前承诺的功能",
+            "value": 1,
+            "num": 3
+        }, {
+            "disabled": false,
+            "label": "包含运维成本",
+            "value": 2,
+            "num": 5
+        }, {
+            "disabled": false,
+            "label": "提前立项（非售前）",
+            "value": 4,
+            "num": 5
+        }
+    ],
+    "dataSourceOptions": [
+        {
+            "disabled": false,
+            "label": "还未对接",
+            "value": 0,
+            "num": 0
+        }, {
+            "disabled": false,
+            "label": "还未梳理",
+            "value": 1,
+            "num": 3
+        }, {
+            "disabled": false,
+            "label": "明确来源",
+            "value": 2,
+            "num": 5
+        }
+    ],
+    "mainDataOptions": [
+        {
+            "disabled": false,
+            "label": "其它系统对接",
+            "value": 0,
+            "num": 0
+        }, {
+            "disabled": false,
+            "label": "来源于物联网",
+            "value": 1,
+            "num": 3
+        }, {
+            "disabled": false,
+            "label": "自身系统生产",
+            "value": 2,
+            "num": 7
+        }
+    ],
+    "iotDataOptions": [
+        {
+            "disabled": false,
+            "label": "物联网设备还未配备",
+            "value": 0,
+            "num": 0
+        }, {
+            "disabled": false,
+            "label": "对接plc等前端设备",
+            "value": 1,
+            "num": 3
+        }, {
+            "disabled": false,
+            "label": "对接时序数据库",
+            "value": 2,
+            "num": 5
+        }, {
+            "disabled": false,
+            "label": "对接结构化数据",
+            "value": 3,
+            "num": 7
+        }, {
+            "disabled": false,
+            "label": "对接统建系统",
+            "value": 4,
+            "num": 7
+        }
+    ],
+    "backendOptions": [
+        {
+            "disabled": false,
+            "label": "沿用站库系统",
+            "value": 0,
+            "num": 0
+        }, {
+            "disabled": false,
+            "label": "其它现有系统",
+            "value": 1,
+            "num": 7
+        }, {
+            "disabled": false,
+            "label": "完全新建",
+            "value": 2,
+            "num": 7
+        }
+    ],
+    "frontendOptions": [
+        {
+            "disabled": false,
+            "label": "沿用站库系统",
+            "value": 0,
+            "num": 0
+        }, {
+            "disabled": false,
+            "label": "沿用数字化交付系统",
+            "value": 1,
+            "num": 0
+        }, {
+            "disabled": false,
+            "label": "其它现有系统",
+            "value": 2,
+            "num": 5
+        }, {
+            "disabled": false,
+            "label": "完全新建",
+            "value": 3,
+            "num": 7
+        }
+    ],
+    "appOptions": [
+        {
+            "disabled": false,
+            "label": "重新开发",
+            "value": 0,
+            "num": 0
+        }, {
+            "disabled": false,
+            "label": "现有作业区应用集成",
+            "value": 1,
+            "num": 3
+        }, {
+            "disabled": false,
+            "label": "现有作业区应用扩建",
+            "value": 2,
+            "num": 5
+        }, {
+            "disabled": false,
+            "label": "没有移动端需求",
+            "value": 3,
+            "num": 7
+        }
+    ],
+    "closeLoopOptions": [
+        {
+            "disabled": false,
+            "label": "否",
+            "value": 0,
+            "num": 0
+        }, {
+            "disabled": false,
+            "label": "还未设计",
+            "value": 1,
+            "num": 3
+        }, {
+            "disabled": false,
+            "label": "是",
+            "value": 2,
+            "num": 5
+        }
+    ],
+    "leaderImportanceOptions": [
+        {
+            "disabled": false,
+            "label": "不明确",
+            "value": 0,
+            "num": 0
+        }, {
+            "disabled": false,
+            "label": "否",
+            "value": 1,
+            "num": 3
+        }, {
+            "disabled": false,
+            "label": "是",
+            "value": 2,
+            "num": 10
+        }
+    ],
+    "documentOptions": [
+        {
+            "disabled": false,
+            "label": "项目启动文档(文字或ppt)",
+            "value": 0,
+            "num": 1
+        }, {
+            "disabled": false,
+            "label": "数据库文档(自己或第三方)",
+            "value": 1,
+            "num": 1
+        }, {
+            "disabled": false,
+            "label": "接口文档",
+            "value": 2,
+            "num": 3
+        },
+        {
+            "disabled": false,
+            "label": "原型(第三方截图也算)",
+            "value": 3,
+            "num": 5
+        },
+        {
+            "disabled": false,
+            "label": "详细设计文档(业务逻辑)",
+            "value": 4,
+            "num": 5
+        },
+        {
+            "disabled": false,
+            "label": "技术框架文档",
+            "value": 5,
+            "num": 1
+        },
+        {
+            "disabled": false,
+            "label": "需要在收尾时产生一些文档",
+            "value": 6,
+            "num": 0
+        }
+    ],
+    "pmOptions": [
+        {
+            "disabled": false,
+            "label": "没有",
+            "value": 0,
+            "num": 0
+        }, {
+            "disabled": false,
+            "label": "有",
+            "value": 1,
+            "num": 10
+        }, {
+            "disabled": false,
+            "label": "待定",
+            "value": 2,
+            "num": 0
+        }
+    ],
+    "otherServeOptions": [
+        {
+            "disabled": false,
+            "label": "视频流",
+            "value": 0,
+            "num": 1
+        }, {
+            "disabled": false,
+            "label": "组态图",
+            "value": 1,
+            "num": 1
+        }, {
+            "disabled": false,
+            "label": "gis地图",
+            "value": 2,
+            "num": 3
+        },
+        {
+            "disabled": false,
+            "label": "审批流",
+            "value": 3,
+            "num": 3
+        }, {
+            "disabled": false,
+            "label": "长连接",
+            "value": 4,
+            "num": 3
+        }, {
+            "disabled": false,
+            "label": "算法服务",
+            "value": 5,
+            "num": 0
+        },
+        {
+            "disabled": false,
+            "label": "报表服务",
+            "value": 6,
+            "num": 5
+        }
+    ],
+    "orgSourceOptions": [
+        {
+            "disabled": false,
+            "label": "作业区管理",
+            "value": 0,
+            "num": 1
+        }, {
+            "disabled": false,
+            "label": "场站管理",
+            "value": 1,
+            "num": 1
+        }, {
+            "disabled": false,
+            "label": "自己重新实现",
+            "value": 2,
+            "num": 3
+        },
+        {
+            "disabled": false,
+            "label": "不设及",
+            "value": 3,
+            "num": 3
+        }
+    ]
+
+
+}

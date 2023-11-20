@@ -6,6 +6,20 @@ const { code } = config
 const timeout = 1000
 
 const dictObj: Recordable = {
+  select: [
+    {
+      value: 0,
+      label: '是'
+    },
+    {
+      value: 1,
+      label: '否'
+    },
+    {
+      value: 99,
+      label: '不涉及'
+    }
+  ],
   importance: [
     {
       value: 0,

@@ -1,0 +1,67 @@
+[
+    {
+        "id": "0",
+        "cate": "PC端",
+        "moduleOne": "填写模块名称",
+        "children": [
+            {
+                "id": "0",
+                "parentId": "0",
+                "moduleTwo": "填写模块名称",
+                "crud": 2,
+                "import": 1,
+                "export": 1,
+                "other": 0,
+                "importance": 0,
+                "cost": 1.8
+            }
+        ]
+    },
+    {
+        "id": "1",
+        "cate": "移动端",
+        "moduleOne": "填写模块名称",
+        "children": [
+            {
+                "id": "0",
+                "parentId": "0",
+                "moduleTwo": "填写模块名称",
+                "crud": 2,
+                "import": 1,
+                "export": 1,
+                "other": 0,
+                "importance": 0,
+                "cost": 1.8
+            }
+        ]
+    },
+    {
+        "id": "2",
+        "cate": "基础功能",
+        "moduleOne": "填写模块名称",
+        "children": [
+            {
+                "id": "0",
+                "parentId": "0",
+                "moduleTwo": "组织机构管理",
+                "crud": 2,
+                "import": 1,
+                "export": 1,
+                "other": 0,
+                "importance": 0,
+                "cost": 1.8
+            },
+            {
+                "id": "1",
+                "parentId": "0",
+                "moduleTwo": "数据同步",
+                "crud": 2,
+                "import": 1,
+                "export": 1,
+                "other": 0,
+                "importance": 0,
+                "cost": 1.8
+            }
+        ]
+    }
+]
