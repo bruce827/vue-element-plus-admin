@@ -57,12 +57,13 @@ const config: AxiosConfig = {
 }
 
 const defaultRequestInterceptors = (config: InternalAxiosRequestConfig) => {
-  const token = getStorage('token')
-  const { userName } = getStorage('userInfo') || ''
+  const token = getStorage('token') || null
+  const username = getStorage('username') || ''
+
   if (token && userName) {
     // 与后台约定header
-    ;(config.headers as AxiosRequestHeaders)['token'] = userInfo.token
-    ;(config.headers as AxiosRequestHeaders)['userName'] = userInfo?.userName
+    ;(config.headers as AxiosRequestHeaders)['Authorization'] = 'Bearer ' + token
+    ;(config.headers as AxiosRequestHeaders)['username'] = username
   }
   if (
     config.method === 'post' &&

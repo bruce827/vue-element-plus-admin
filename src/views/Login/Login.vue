@@ -2,7 +2,6 @@
 import { LoginForm, RegisterForm } from './components'
 import { ThemeSwitch } from '@/components/ThemeSwitch'
 import { LocaleDropdown } from '@/components/LocaleDropdown'
-import { useI18n } from '@/hooks/web/useI18n'
 import { underlineToHump } from '@/utils'
 import { useAppStore } from '@/store/modules/app'
 import { useDesign } from '@/hooks/web/useDesign'
@@ -14,8 +13,6 @@ const { getPrefixCls } = useDesign()
 const prefixCls = getPrefixCls('login')
 
 const appStore = useAppStore()
-
-const { t } = useI18n()
 
 const isLogin = ref(true)
 
@@ -48,11 +45,11 @@ const toLogin = () => {
               tag="div"
               enter-active-class="animate__animated animate__bounceInLeft"
             >
-              <img src="@/assets/svgs/login-box-bg.svg" key="1" alt="" class="w-350px" />
-              <div class="text-3xl text-white" key="2">{{ t('login.welcome') }}</div>
+              <img src="@/assets/imgs/login-robot-bg.gif" key="1" alt="" class="w-500px" />
+              <!-- <div class="text-3xl text-white" key="2">{{ t('login.welcome') }}</div>
               <div class="mt-5 font-normal text-white text-14px" key="3">
                 {{ t('login.message') }}
-              </div>
+              </div> -->
             </TransitionGroup>
           </div>
         </div>
@@ -65,10 +62,10 @@ const toLogin = () => {
               <span class="text-20px font-bold">{{ underlineToHump(appStore.getTitle) }}</span>
             </div>
 
-            <div class="flex justify-end items-center space-x-10px">
+            <!-- <div class="flex justify-end items-center space-x-10px">
               <ThemeSwitch />
               <LocaleDropdown class="lt-xl:text-white dark:text-white" />
-            </div>
+            </div> -->
           </div>
           <Transition appear enter-active-class="animate__animated animate__bounceInRight">
             <div

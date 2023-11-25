@@ -2,7 +2,7 @@
 import { reactive, ref, watch, onMounted } from 'vue'
 import { Form, FormSchema } from '@/components/Form'
 import { useI18n } from '@/hooks/web/useI18n'
-import { ElButton, ElCheckbox, ElLink } from 'element-plus'
+import { ElButton, ElCheckbox, ElLink, ElMessage } from 'element-plus'
 import { useForm } from '@/hooks/web/useForm'
 import { loginApi, getTestRoleApi, getAdminRoleApi } from '@/api/login'
 import { useStorage } from '@/hooks/web/useStorage'
@@ -13,6 +13,7 @@ import type { RouteLocationNormalizedLoaded, RouteRecordRaw } from 'vue-router'
 import { UserType } from '@/api/login/types'
 import { useValidator } from '@/hooks/web/useValidator'
 import { Icon } from '@/components/Icon'
+import { json2formData } from '@/utils'
 
 const { required } = useValidator()
 
@@ -86,9 +87,13 @@ const schema = reactive<FormSchema[]>([
             <>
               <div class="flex justify-between items-center w-[100%]">
                 <ElCheckbox v-model={remember.value} label={t('login.remember')} size="small" />
-                <ElLink type="primary" underline={false}>
+                {/*
+                
+                      <ElLink type="primary" underline={false}>
                   {t('login.forgetPassword')}
                 </ElLink>
+                
+                */}
               </div>
             </>
           )
@@ -111,65 +116,15 @@ const schema = reactive<FormSchema[]>([
                   {t('login.login')}
                 </ElButton>
               </div>
-              <div class="w-[100%] mt-15px">
-                <ElButton class="w-[100%]" onClick={toRegister}>
-                  {t('login.register')}
-                </ElButton>
+              {/** 
+              
+                   <div class="w-[100%] mt-15px">
+                 <ElButton class="w-[100%]" onClick={toRegister}>
+                 {t('login.register')}
+               </ElButton>
               </div>
-            </>
-          )
-        }
-      }
-    }
-  },
-  {
-    field: 'other',
-    component: 'Divider',
-    label: t('login.otherLogin'),
-    componentProps: {
-      contentPosition: 'center'
-    }
-  },
-  {
-    field: 'otherIcon',
-    colProps: {
-      span: 24
-    },
-    formItemProps: {
-      slots: {
-        default: () => {
-          return (
-            <>
-              <div class="flex justify-between w-[100%]">
-                <Icon
-                  icon="ant-design:github-filled"
-                  size={iconSize}
-                  class="cursor-pointer ant-icon"
-                  color={iconColor}
-                  hoverColor={hoverColor}
-                />
-                <Icon
-                  icon="ant-design:wechat-filled"
-                  size={iconSize}
-                  class="cursor-pointer ant-icon"
-                  color={iconColor}
-                  hoverColor={hoverColor}
-                />
-                <Icon
-                  icon="ant-design:alipay-circle-filled"
-                  size={iconSize}
-                  color={iconColor}
-                  hoverColor={hoverColor}
-                  class="cursor-pointer ant-icon"
-                />
-                <Icon
-                  icon="ant-design:weibo-circle-filled"
-                  size={iconSize}
-                  color={iconColor}
-                  hoverColor={hoverColor}
-                  class="cursor-pointer ant-icon"
-                />
-              </div>
+              
+              */}
             </>
           )
         }
@@ -211,7 +166,8 @@ const signIn = async () => {
     if (isValid) {
       loading.value = true
       const formData = await getFormData<UserType>()
-
+      // json2formData()
+      debugger
       try {
         const res = await loginApi(formData)
 
@@ -229,6 +185,9 @@ const signIn = async () => {
             push({ path: redirect.value || permissionStore.addRouters[0].path })
           }
         }
+      } catch (err: any) {
+        debugger
+        ElMessage(err)
       } finally {
         loading.value = false
       }
@@ -259,11 +218,6 @@ const getRole = async () => {
     permissionStore.setIsAddRouters(true)
     push({ path: redirect.value || permissionStore.addRouters[0].path })
   }
-}
-
-// 去注册页面
-const toRegister = () => {
-  emit('to-register')
 }
 
 onMounted(() => {

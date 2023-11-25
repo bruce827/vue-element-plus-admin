@@ -132,3 +132,31 @@ export function sleep(time) {
     }, time)
   })
 }
+
+/**
+ * @description json转formData
+ * @return [FormData]
+ * @export
+ */
+export function json2formData(obj: Object) {
+  const formData = new FormData()
+  Object.keys(obj).map((key) => {
+    formData.append(key, obj[key])
+  })
+  return formData
+}
+
+/**
+ * @description 文件转formData
+ * @param fileList
+ * @return [FormData]
+ */
+export function file2formData(fileList: any[]) {
+  const formData: any = new FormData()
+  if (fileList && fileList.length > 0) {
+    for (const item of this.fileList) {
+      formData.append('file', item.file)
+    }
+  }
+  return formData
+}

@@ -9,4 +9,7 @@ export interface UserType {
   role: string
   roleId: string
   permissions: string | string[]
+  currentOrg?: string[] | number[]
+  avatar?: string
+  role?: string
 }

@@ -1,0 +1,25 @@
+[
+    {
+      "path": "/dashboard",
+      "component": "#",
+      "redirect": "/dashboard/homeMonitoring",
+      "name": "Dashboard",
+      "meta": {
+        "title": "数据看板",
+        "icon": "ant-design:dashboard-filled",
+        "alwaysShow": true
+      },
+      "children": [
+        {
+          "path": "homeMonitoring",
+          "component": "views/Dashboard/HomeMonitoring.vue",
+          "name": "Analysis",
+          "meta": {
+            "title": "实时状态",
+            "noCache": true,
+            "affix": true
+          }
+        }
+      ]
+    }
+  ]

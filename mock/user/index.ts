@@ -6,6 +6,9 @@ const { code } = config
 // const timeout = 1000
 const timeout = 0
 
+const fake_token =
+  'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdWJqZWN0IiwiZXhwIjoxNzAzMjk3MjcyLCJwYXlsb2FkIjoie1wiYWNjb3VudE5vbkV4cGlyZWRcIjp0cnVlLFwiYWNjb3VudE5vbkxvY2tlZFwiOnRydWUsXCJhdXRob3JpdGllc1wiOltdLFwiY3JlZGVudGlhbHNOb25FeHBpcmVkXCI6dHJ1ZSxcImVuYWJsZWRcIjp0cnVlLFwiaWRcIjoxMjg3LFwicGFzc3dvcmRcIjpcIjRlNDkwODhlYTZlYzU5ODFiYTM1YzdmODk5MmMzYWYxXCIsXCJ1c2VybmFtZVwiOlwiZ3NtYW5cIn0ifQ.7x8LD-Az_7x7nXzVMu_Ps62pBIIQ0QTNQ86xCc_5Z5g'
+
 const List: {
   username: string
   password: string
@@ -67,7 +70,8 @@ export default [
           hasUser = true
           return {
             code: code,
-            data: user
+            data: fake_token,
+            message: '操作成功'
           }
         }
       }
