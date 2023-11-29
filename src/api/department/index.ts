@@ -18,6 +18,8 @@ export const saveUserApi = (data: any) => {
 }
 
 export const saveDepartmentApi = (data: any) => {
+  console.log(data)
+  debugger
   return request.post({ url: '/department/save', data })
 }
 

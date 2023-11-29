@@ -1,20 +1,25 @@
 <script lang="ts" setup="setup">
 import { ref, unref, onMounted, nextTick, computed } from 'vue'
 import { useRoute } from 'vue-router'
-import { useAppStore } from '@/store/modules/app'
+import { useUserStore } from '@/store/modules/user'
 import { ElSkeleton, ElSkeletonItem } from 'element-plus'
 
 const currentRoute = useRoute()
 const frameRef = ref<HTMLFrameElement | null>(null)
 const loading = ref<boolean>(true)
 const frameSrc = ref<string>('www.baidu.com')
-const appStore = useAppStore()
+const userStore = useUserStore()
 
-const userName = computed(() => appStore.getTitle)
+const username = computed(() => userStore.getUserName)
+const currentOrg = computed(() => userStore.getCurrentOrg)
 
 if (unref(currentRoute.meta)?.frameSrc) {
   //   页面传参
-  frameSrc.value = (unref(currentRoute.meta)?.frameSrc + '?userName=' + userName.value) as string
+  frameSrc.value = (unref(currentRoute.meta)?.frameSrc +
+    '?userName=' +
+    username.value +
+    '&currentOrg=' +
+    currentOrg.value) as string
 }
 
 const hideLoading = () => {

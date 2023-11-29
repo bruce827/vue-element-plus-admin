@@ -18,6 +18,8 @@
   "god.tsconfig": "./tsconfig.json",
   "cSpell.ignoreWords": [
     "Cascader",
+    "Emitt",
+    "Recordset",
     "daterange",
     "datetime",
     "echarts",

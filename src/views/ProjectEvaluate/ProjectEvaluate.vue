@@ -1,6 +1,6 @@
 <script lang="tsx" setup="setup">
 import { reactive, ref, onMounted, computed } from 'vue'
-import { ElAlert, ElCollapse, ElCollapseItem, ElCard } from 'element-plus'
+import { ElAlert, ElCollapse, ElCollapseItem, ElCard, ElButton, ElEmpty } from 'element-plus'
 import type { FormItemProp } from 'element-plus'
 import { useForm } from '@/hooks/web/useForm'
 import { useValidator } from '@/hooks/web/useValidator'
@@ -11,6 +11,8 @@ import StatisticCard from './component/Statistic.vue'
 import ModuleTable from './component/ModuleTable.vue'
 import { useProjectEvaluateStore } from '@/store/modules/projectEvaluate'
 import { useAppStore } from '@/store/modules/app'
+
+import emptyProject from '@/assets/imgs/emptyProject.jpg'
 
 const appStore = useAppStore()
 
@@ -395,20 +397,29 @@ const data = reactive({
 })
 
 /**
- * 以下是关于表单的方法
+ * 以下是统计数据方法
  */
 
+const showStat = ref<boolean>(false)
+
+/**
+ * 统计数据方法结束
+ */
+
+/**
+ * 以下是关于表单的方法
+ */
 // 表单校验
 const formValidate = (prop: FormItemProp, isValid: boolean, message: string) => {
   debugger
   console.log(prop, isValid, message)
 }
 // 切换禁用
-const changeDisabled = (bool: boolean) => {
-  setProps({
-    disabled: bool
-  })
-}
+// const changeDisabled = (bool: boolean) => {
+//   setProps({
+//     disabled: bool
+//   })
+// }
 // 是否全部必填
 const changeAllRequired = () => {
   setProps({
@@ -421,15 +432,29 @@ const resetForm = async () => {
   elFormExpose?.resetFields()
 }
 // 保存
-const save = async () => {
+const saveForm = async () => {
   const elForm = await getElFormExpose()
   const valid = await elForm?.validate().catch((err) => {
     console.log(err)
   })
   if (valid) {
     data.formData = await getFormData()
+    modulesDisabled.value = false
+    // 展开模块设计
+    activePanel.value = 'modules'
+    // 显示统计数据
+    showStat.value = true
   }
 }
+/**
+ * 表单方法结束
+ */
+
+/**
+ * 以下是table方法
+ *
+ */
+const modulesDisabled = ref<boolean>(true)
 
 // 加载所有码表
 const loadAll = () => {
@@ -473,7 +498,8 @@ onMounted(() => {
 <template>
   <ContentWrap message="项目启动前项目可行性预估" :title="`${data.formData.proName}项目实施评估`">
     <el-card>
-      <StatisticCard />
+      <StatisticCard v-if="showStat" />
+      <el-empty v-else :image="emptyProject" :image-size="180" description="还没有填写项目信息" />
     </el-card>
     <el-collapse accordion v-model="activePanel">
       <el-collapse-item name="eval" title="项目评估">
@@ -487,7 +513,7 @@ onMounted(() => {
         />
         <div class="form-submit">
           <ElButton @click="resetForm"> 重置 </ElButton>
-          <ElButton type="primary" :loading="loading" @click="save"> 生成 </ElButton>
+          <ElButton type="primary" @click="saveForm"> 生成 </ElButton>
         </div>
       </el-collapse-item>
       <el-collapse-item title="模块设计" :disabled="true" name="modules">
@@ -499,5 +525,6 @@ onMounted(() => {
 <style lang="less" scoped="scoped">
 .form-submit {
   display: flex;
+  justify-content: flex-end;
 }
 </style>

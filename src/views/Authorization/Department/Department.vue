@@ -80,8 +80,31 @@ const crudSchemas = reactive<CrudSchema[]>([
     }
   },
   {
+    field: 'pid',
+    label: '父级部门',
+    search: {
+      hidden: true
+    },
+    table: {
+      hidden: true
+    },
+    form: {
+      component: 'Cascader',
+      componentProps: {
+        props: {
+          checkStrictly: true,
+          label: 'departmentName'
+        }
+      },
+      optionApi: async () => {
+        const res = await getDepartmentApi()
+        return res.data.list
+      }
+    }
+  },
+  {
     field: 'id',
-    label: t('userDemo.departmentName'),
+    label: '部门名称',
     table: {
       slots: {
         default: (data: any) => {
@@ -90,17 +113,8 @@ const crudSchemas = reactive<CrudSchema[]>([
       }
     },
     form: {
-      component: 'TreeSelect',
-      componentProps: {
-        nodeKey: 'id',
-        props: {
-          label: 'departmentName'
-        }
-      },
-      optionApi: async () => {
-        const res = await getDepartmentApi()
-        return res.data.list
-      }
+      component: 'Input',
+      componentProps: {}
     },
     detail: {
       slots: {
@@ -168,8 +182,8 @@ const crudSchemas = reactive<CrudSchema[]>([
     form: {
       component: 'DatePicker',
       componentProps: {
-        type: 'datetime',
-        valueFormat: 'YYYY-MM-DD HH:mm:ss'
+        type: 'date',
+        valueFormat: 'YYYY-MM-DD'
       }
     }
   },
@@ -217,12 +231,6 @@ const crudSchemas = reactive<CrudSchema[]>([
             <>
               <ElButton type="primary" onClick={() => action(data.row, 'edit')}>
                 {t('exampleDemo.edit')}
-              </ElButton>
-              <ElButton type="success" onClick={() => action(data.row, 'detail')}>
-                {t('exampleDemo.detail')}
-              </ElButton>
-              <ElButton type="danger" onClick={() => delData(data.row)}>
-                {t('exampleDemo.del')}
               </ElButton>
             </>
           )
@@ -277,6 +285,7 @@ const save = async () => {
   const formData = await write?.submit()
   if (formData) {
     saveLoading.value = true
+    debugger
     const res = await saveDepartmentApi(formData)
       .catch(() => {})
       .finally(() => {
@@ -294,7 +303,6 @@ const save = async () => {
 <template>
   <ContentWrap>
     <Search :schema="allSchemas.searchSchema" @search="setSearchParams" @reset="setSearchParams" />
-
     <div class="mb-10px">
       <ElButton type="primary" @click="AddAction">{{ t('exampleDemo.add') }}</ElButton>
       <ElButton :loading="delLoading" type="danger" @click="delData(null)">

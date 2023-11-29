@@ -11,6 +11,7 @@ import { set } from 'nprogress'
 
 import { useAppStore } from '@/store/modules/app'
 import { throwError } from 'element-plus/es/utils'
+import { get } from 'http'
 
 const { getStorage, setStorage } = useStorage('localStorage')
 
@@ -26,9 +27,9 @@ export const useUserStore = defineStore('user', {
   state: (): UserState => {
     return {
       userInfo: {
-        username: '',
+        username: getStorage('username'),
         // 当前组织机构
-        currentOrg: '',
+        currentOrg: getStorage('currentOrg'),
         avatar: '',
         // 角色
         role: ''
@@ -38,86 +39,11 @@ export const useUserStore = defineStore('user', {
     }
   },
   getters: {
-    getBreadcrumb(): boolean {
-      return this.breadcrumb
+    getUserName() {
+      return this.userInfo.username
     },
-    getBreadcrumbIcon(): boolean {
-      return this.breadcrumbIcon
-    },
-    getCollapse(): boolean {
-      return this.collapse
-    },
-    getUniqueOpened(): boolean {
-      return this.uniqueOpened
-    },
-    getHamburger(): boolean {
-      return this.hamburger
-    },
-    getScreenfull(): boolean {
-      return this.screenfull
-    },
-    getSize(): boolean {
-      return this.size
-    },
-    getLocale(): boolean {
-      return this.locale
-    },
-    getTagsView(): boolean {
-      return this.tagsView
-    },
-    getTagsViewIcon(): boolean {
-      return this.tagsViewIcon
-    },
-    getLogo(): boolean {
-      return this.logo
-    },
-    getFixedHeader(): boolean {
-      return this.fixedHeader
-    },
-    getGreyMode(): boolean {
-      return this.greyMode
-    },
-    getDynamicRouter(): boolean {
-      return this.dynamicRouter
-    },
-    getServerDynamicRouter(): boolean {
-      return this.serverDynamicRouter
-    },
-    getFixedMenu(): boolean {
-      return this.fixedMenu
-    },
-    getPageLoading(): boolean {
-      return this.pageLoading
-    },
-    getLayout(): LayoutType {
-      return this.layout
-    },
-    getTitle(): string {
-      return this.title
-    },
-    getUserInfo(): string {
-      return this.userInfo
-    },
-    getIsDark(): boolean {
-      return this.isDark
-    },
-    getCurrentSize(): ComponentSize {
-      return this.currentSize
-    },
-    getSizeMap(): ComponentSize[] {
-      return this.sizeMap
-    },
-    getMobile(): boolean {
-      return this.mobile
-    },
-    getTheme(): ThemeTypes {
-      return this.theme
-    },
-    getFooter(): boolean {
-      return this.footer
-    },
-    getOrgSelect(): boolean {
-      return this.orgSelect
+    getCurrentOrg() {
+      return this.userInfo.currentOrg?.pop()
     }
   },
   actions: {

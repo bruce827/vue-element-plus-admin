@@ -112,6 +112,7 @@ const actionFn = (data) => {
     row-key="id"
     :loading="loading"
     sortable
+    show-summary
     :pagination="{
       total: total
     }"

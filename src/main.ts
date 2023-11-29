@@ -34,6 +34,13 @@ import App from './App.vue'
 
 import './permission'
 
+// vex-table实例
+import VXETable from 'vxe-table'
+import 'vxe-table/lib/style.css'
+
+import {setupVexTable} from '@/plugins/vexTable'
+
+
 // 创建实例
 const setupAll = async () => {
   const app = createApp(App)
@@ -49,6 +56,8 @@ const setupAll = async () => {
   setupRouter(app)
 
   setupPermission(app)
+
+  await setupVexTable(app)
 
   app.mount('#app')
 }

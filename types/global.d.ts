@@ -64,4 +64,8 @@ declare global {
     topHeaderHoverColor?: string
     topToolBorderColor?: string
   }
+
+  declare interface RowVO {
+    [key: string]: any
+  }
 }

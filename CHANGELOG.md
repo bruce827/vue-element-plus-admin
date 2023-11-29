@@ -106,3 +106,22 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Performance Improvements
 - 组态图组件文档
+
+## [V0.2.2] (2023-11-26) 原型优化
+
+### Features
+
+- 集成vex-table
+
+### Bug Fixes
+
+无
+
+### Docs
+
+- 项目范围文档v0.9
+- 项目计划v1.0
+- 接口文档v1.0（notion）
+
+### Performance Improvements
+- 部门管理原型优化
