@@ -1,12 +1,13 @@
-<script setup lang="ts">
+<script setup lang="tsx">
 import { Form, FormSchema } from '@/components/Form'
 import { ContentWrap } from '@/components/ContentWrap'
 import { useI18n } from '@/hooks/web/useI18n'
 import { useForm } from '@/hooks/web/useForm'
 import { reactive, unref, ref } from 'vue'
-import { ElButton, ElInput, FormItemProp, ComponentSize } from 'element-plus'
+import { ElInput, FormItemProp, ComponentSize, ElMessage, ElMessageBox } from 'element-plus'
 import { useValidator } from '@/hooks/web/useValidator'
 import { getDictOneApi } from '@/api/common'
+import { BaseButton } from '@/components/Button'
 
 const { required } = useValidator()
 
@@ -125,6 +126,8 @@ const schema = reactive<FormSchema[]>([
     field: 'field3',
     label: t('formDemo.radio'),
     component: 'RadioGroup',
+    hidden: true,
+    value: '1',
     componentProps: {
       options: [
         {
@@ -142,7 +145,8 @@ const schema = reactive<FormSchema[]>([
     field: 'field4',
     label: t('formDemo.checkbox'),
     component: 'CheckboxGroup',
-    value: [],
+    value: ['1'],
+    remove: true,
     componentProps: {
       options: [
         {
@@ -182,6 +186,40 @@ const schema = reactive<FormSchema[]>([
       const res = await getTreeSelectData()
       return res
     }
+  },
+  {
+    field: 'field8',
+    component: 'Upload',
+    label: `${t('formDemo.default')}`,
+    componentProps: {
+      limit: 3,
+      action: 'https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15',
+      // fileList: ,
+      multiple: true,
+      onPreview: (uploadFile) => {
+        console.log(uploadFile)
+      },
+      onRemove: (file) => {
+        console.log(file)
+      },
+      beforeRemove: (uploadFile) => {
+        return ElMessageBox.confirm(`Cancel the transfer of ${uploadFile.name} ?`).then(
+          () => true,
+          () => false
+        )
+      },
+      onExceed: (files, uploadFiles) => {
+        ElMessage.warning(
+          `The limit is 3, you selected ${files.length} files this time, add up to ${
+            files.length + uploadFiles.length
+          } totally`
+        )
+      },
+      slots: {
+        default: () => <BaseButton type="primary">Click to upload</BaseButton>,
+        tip: () => <div class="el-upload__tip">jpg/png files with a size less than 500KB.</div>
+      }
+    }
   }
 ])
 
@@ -194,7 +232,8 @@ const {
   setSchema,
   getComponentExpose,
   getFormItemExpose,
-  getElFormExpose
+  getElFormExpose,
+  getFormData
 } = formMethods
 
 const changeLabelWidth = (width: number | string) => {
@@ -253,8 +292,20 @@ const setValue = async (reset: boolean) => {
       field3: '2',
       field4: ['1', '3'],
       field5: '2022-01-27',
-      field6: '17:00'
+      field6: '17:00',
+      field8: [
+        {
+          name: 'element-plus-logo.svg',
+          url: 'https://element-plus.org/images/element-plus-logo.svg'
+        },
+        {
+          name: 'element-plus-logo2.svg',
+          url: 'https://element-plus.org/images/element-plus-logo.svg'
+        }
+      ]
     })
+    const formData = await getFormData()
+    console.log(formData)
   }
 }
 
@@ -351,48 +402,55 @@ const inoutValidation = async () => {
 const formValidate = (prop: FormItemProp, isValid: boolean, message: string) => {
   console.log(prop, isValid, message)
 }
+
+setTimeout(async () => {
+  const formData = await getFormData()
+  console.log(formData)
+}, 2000)
 </script>
 
 <template>
   <ContentWrap :title="`UseForm ${t('formDemo.operate')}`" style="margin-bottom: 20px">
-    <ElButton @click="changeLabelWidth(150)">{{ t('formDemo.change') }} labelWidth</ElButton>
-    <ElButton @click="changeLabelWidth('auto')">{{ t('formDemo.restore') }} labelWidth</ElButton>
+    <BaseButton @click="changeLabelWidth(150)">{{ t('formDemo.change') }} labelWidth</BaseButton>
+    <BaseButton @click="changeLabelWidth('auto')"
+      >{{ t('formDemo.restore') }} labelWidth</BaseButton
+    >
 
-    <ElButton @click="changeSize('large')">{{ t('formDemo.change') }} size</ElButton>
-    <ElButton @click="changeSize('default')">{{ t('formDemo.restore') }} size</ElButton>
+    <BaseButton @click="changeSize('large')">{{ t('formDemo.change') }} size</BaseButton>
+    <BaseButton @click="changeSize('default')">{{ t('formDemo.restore') }} size</BaseButton>
 
-    <ElButton @click="changeDisabled(true)">{{ t('formDemo.disabled') }}</ElButton>
-    <ElButton @click="changeDisabled(false)">{{ t('formDemo.disablement') }}</ElButton>
+    <BaseButton @click="changeDisabled(true)">{{ t('formDemo.disabled') }}</BaseButton>
+    <BaseButton @click="changeDisabled(false)">{{ t('formDemo.disablement') }}</BaseButton>
 
-    <ElButton @click="changeSchema(true)">
+    <BaseButton @click="changeSchema(true)">
       {{ t('formDemo.delete') }} {{ t('formDemo.select') }}
-    </ElButton>
-    <ElButton @click="changeSchema(false)">
+    </BaseButton>
+    <BaseButton @click="changeSchema(false)">
       {{ t('formDemo.add') }} {{ t('formDemo.select') }}
-    </ElButton>
+    </BaseButton>
 
-    <ElButton @click="setValue(false)">{{ t('formDemo.setValue') }}</ElButton>
-    <ElButton @click="setValue(true)">{{ t('formDemo.resetValue') }}</ElButton>
+    <BaseButton @click="setValue(false)">{{ t('formDemo.setValue') }}</BaseButton>
+    <BaseButton @click="setValue(true)">{{ t('formDemo.resetValue') }}</BaseButton>
 
-    <ElButton @click="setLabel">
+    <BaseButton @click="setLabel">
       {{ t('formDemo.set') }} {{ t('formDemo.select') }} label
-    </ElButton>
+    </BaseButton>
 
-    <ElButton @click="addItem"> {{ t('formDemo.add') }} {{ t('formDemo.subitem') }} </ElButton>
+    <BaseButton @click="addItem"> {{ t('formDemo.add') }} {{ t('formDemo.subitem') }} </BaseButton>
 
-    <ElButton @click="formValidation"> {{ t('formDemo.formValidation') }} </ElButton>
-    <ElButton @click="verifyReset"> {{ t('formDemo.verifyReset') }} </ElButton>
+    <BaseButton @click="formValidation"> {{ t('formDemo.formValidation') }} </BaseButton>
+    <BaseButton @click="verifyReset"> {{ t('formDemo.verifyReset') }} </BaseButton>
 
-    <ElButton @click="getDictOne">
+    <BaseButton @click="getDictOne">
       {{ `${t('formDemo.select')} ${t('searchDemo.dynamicOptions')}` }}
-    </ElButton>
+    </BaseButton>
 
-    <ElButton @click="inoutFocus">
+    <BaseButton @click="inoutFocus">
       {{ `${t('formDemo.input')} ${t('formDemo.focus')}` }}
-    </ElButton>
-    <ElButton @click="inoutValidation">
+    </BaseButton>
+    <BaseButton @click="inoutValidation">
       {{ `${t('formDemo.input')} ${t('formDemo.formValidation')}` }}
-    </ElButton>
+    </BaseButton>
   </ContentWrap>
   <ContentWrap :title="`UseForm ${t('formDemo.example')}`">
     <Form :schema="schema" @register="formRegister" @validate="formValidate" />

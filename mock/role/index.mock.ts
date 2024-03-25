@@ -1,9 +1,6 @@
-import config from '@/config/axios/config'
-import { MockMethod } from 'vite-plugin-mock'
 import Mock from 'mockjs'
+import { SUCCESS_CODE } from '@/constants'
 import { toAnyString } from '@/utils'
-
-const { code } = config
 
 const timeout = 1000
 
@@ -25,7 +22,8 @@ const adminList = [
         name: 'Analysis',
         meta: {
           title: 'router.analysis',
-          noCache: true
+          noCache: true,
+          affix: true
         }
       },
       {
@@ -34,7 +32,8 @@ const adminList = [
         name: 'Workplace',
         meta: {
           title: 'router.workplace',
-          noCache: true
+          noCache: true,
+          affix: true
         }
       }
     ]
@@ -150,6 +149,22 @@ const adminList = [
             name: 'TableImagePreview',
             meta: {
               title: 'router.PicturePreview'
+            }
+          },
+          {
+            path: 'table-video-preview',
+            component: 'views/Components/Table/TableVideoPreview',
+            name: 'TableVideoPreview',
+            meta: {
+              title: 'router.tableVideoPreview'
+            }
+          },
+          {
+            path: 'card-table',
+            component: 'views/Components/Table/CardTable',
+            name: 'CardTable',
+            meta: {
+              title: 'router.cardTable'
             }
           }
           // {
@@ -293,6 +308,38 @@ const adminList = [
         meta: {
           title: 'router.waterfall'
         }
+      },
+      {
+        path: 'image-cropping',
+        component: 'views/Components/ImageCropping',
+        name: 'ImageCropping',
+        meta: {
+          title: 'router.imageCropping'
+        }
+      },
+      {
+        path: 'video-player',
+        component: 'views/Components/VideoPlayer',
+        name: 'VideoPlayer',
+        meta: {
+          title: 'router.videoPlayer'
+        }
+      },
+      {
+        path: 'avatars',
+        component: 'views/Components/Avatars',
+        name: 'Avatars',
+        meta: {
+          title: 'router.avatars'
+        }
+      },
+      {
+        path: 'i-agree',
+        component: 'views/Components/IAgree',
+        name: 'IAgree',
+        meta: {
+          title: 'router.iAgree'
+        }
       }
     ]
   },
@@ -316,7 +363,7 @@ const adminList = [
         }
       },
       {
-        path: 'multipleTabs-demo/:id',
+        path: 'multiple-tabs-demo/:id',
         component: 'views/Function/MultipleTabsDemo',
         name: 'MultipleTabsDemo',
         meta: {
@@ -335,7 +382,7 @@ const adminList = [
       },
       {
         path: 'test',
-        component: () => 'views/Function/Test',
+        component: 'views/Function/Test',
         name: 'Test',
         meta: {
           title: 'router.permission',
@@ -634,7 +681,9 @@ const testList: string[] = [
   '/components/table/use-table',
   '/components/table/tree-table',
   '/components/table/table-image-preview',
+  '/components/table/table-video-preview',
   '/components/table/ref-table',
+  '/components/table/card-table',
   '/components/editor-demo',
   '/components/editor-demo/editor',
   '/components/editor-demo/json-editor',
@@ -651,6 +700,10 @@ const testList: string[] = [
   '/components/infotip',
   '/components/input-password',
   '/components/waterfall',
+  '/components/image-cropping',
+  '/components/video-player',
+  '/components/avatars',
+  '/components/i-agree',
   'function',
   '/function/multiple-tabs',
   '/function/multiple-tabs-demo/:id',
@@ -1113,23 +1166,23 @@ for (let i = 0; i < 4; i++) {
 export default [
   // 列表接口
   {
-    url: '/role/list',
+    url: '/mock/role/list',
     method: 'get',
     timeout,
     response: () => {
       return {
-        code: code,
+        code: SUCCESS_CODE,
         data: adminList
       }
     }
   },
   {
-    url: '/role/table',
+    url: '/mock/role/table',
     method: 'get',
     timeout,
     response: () => {
       return {
-        code: code,
+        code: SUCCESS_CODE,
         data: {
           list: List,
           total: 4
@@ -1139,23 +1192,23 @@ export default [
   },
   // 列表接口
   {
-    url: '/role/list2',
+    url: '/mock/role/list2',
     method: 'get',
     timeout,
     response: () => {
       return {
-        code: code,
+        code: SUCCESS_CODE,
         data: testList
       }
     }
   },
   {
-    url: '/role/table',
+    url: '/mock/role/table',
     method: 'get',
     timeout,
     response: () => {
       return {
-        code: code,
+        code: SUCCESS_CODE,
         data: {
           list: List,
           total: 4
@@ -1163,4 +1216,4 @@ export default [
       }
     }
   }
-] as MockMethod[]
+]

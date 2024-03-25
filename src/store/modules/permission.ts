@@ -46,6 +46,7 @@ export const usePermissionStore = defineStore('permission', {
         if (type === 'server') {
           // 模拟后端过滤菜单
           routerMap = generateRoutesByServer(routers as AppCustomRouteRecordRaw[])
+          console.log(routerMap)
         } else if (type === 'frontEnd') {
           // 模拟前端过滤菜单
           routerMap = generateRoutesByFrontEnd(cloneDeep(asyncRouterMap), routers as string[])
@@ -76,6 +77,9 @@ export const usePermissionStore = defineStore('permission', {
     setMenuTabRouters(routers: AppRouteRecordRaw[]): void {
       this.menuTabRouters = routers
     }
+  },
+  persist: {
+    paths: ['routers', 'addRouters', 'menuTabRouters']
   }
 })
 

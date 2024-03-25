@@ -4,6 +4,7 @@ import type { App } from 'vue'
 import { Layout, getParentLayout, Iframe } from '@/utils/routerHelper'
 import { useI18n } from '@/hooks/web/useI18n'
 import { table } from 'console'
+import { NO_RESET_WHITE_LIST } from '@/constants'
 
 const { t } = useI18n()
 
@@ -44,6 +45,29 @@ export const constantRouterMap: AppRouteRecordRaw[] = [
       title: t('router.login'),
       noTagsView: true
     }
+  },
+  {
+    path: '/personal',
+    component: Layout,
+    redirect: '/personal/personal-center',
+    name: 'Personal',
+    meta: {
+      title: t('router.personal'),
+      hidden: true,
+      canTo: true
+    },
+    children: [
+      {
+        path: 'personal-center',
+        component: () => import('@/views/Personal/PersonalCenter/PersonalCenter.vue'),
+        name: 'PersonalCenter',
+        meta: {
+          title: t('router.personalCenter'),
+          hidden: true,
+          canTo: true
+        }
+      }
+    ]
   },
   {
     path: '/404',
@@ -177,6 +201,19 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
             name: 'VXETable',
             meta: {
               title: 'vxe-table插件集成'
+            path: 'table-video-preview',
+            component: () => import('@/views/Components/Table/TableVideoPreview.vue'),
+            name: 'TableVideoPreview',
+            meta: {
+              title: t('router.tableVideoPreview')
+            }
+          },
+          {
+            path: 'card-table',
+            component: () => import('@/views/Components/Table/CardTable.vue'),
+            name: 'CardTable',
+            meta: {
+              title: t('router.cardTable')
             }
           }
         ]
@@ -311,6 +348,38 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
         name: 'waterfall',
         meta: {
           title: t('router.waterfall')
+        }
+      },
+      {
+        path: 'image-cropping',
+        component: () => import('@/views/Components/ImageCropping.vue'),
+        name: 'ImageCropping',
+        meta: {
+          title: t('router.imageCropping')
+        }
+      },
+      {
+        path: 'video-player',
+        component: () => import('@/views/Components/VideoPlayer.vue'),
+        name: 'VideoPlayer',
+        meta: {
+          title: t('router.videoPlayer')
+        }
+      },
+      {
+        path: 'avatars',
+        component: () => import('@/views/Components/Avatars.vue'),
+        name: 'Avatars',
+        meta: {
+          title: t('router.avatars')
+        }
+      },
+      {
+        path: 'i-agree',
+        component: () => import('@/views/Components/IAgree.vue'),
+        name: 'IAgree',
+        meta: {
+          title: t('router.iAgree')
         }
       }
     ]
@@ -619,10 +688,9 @@ const router = createRouter({
 })
 
 export const resetRouter = (): void => {
-  const resetWhiteNameList = ['Redirect', 'Login', 'NoFind', 'Root']
   router.getRoutes().forEach((route) => {
     const { name } = route
-    if (name && !resetWhiteNameList.includes(name as string)) {
+    if (name && !NO_RESET_WHITE_LIST.includes(name as string)) {
       router.hasRoute(name) && router.removeRoute(name)
     }
   })

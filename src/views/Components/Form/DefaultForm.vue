@@ -8,7 +8,6 @@ import { SelectOption, RadioOption, CheckboxOption, FormSchema } from '@/compone
 import {
   ElOption,
   ElOptionGroup,
-  ElButton,
   ElRadio,
   ElRadioButton,
   ElCheckbox,
@@ -20,6 +19,7 @@ import {
 } from 'element-plus'
 import { getDictOneApi } from '@/api/common'
 import { Icon } from '@/components/Icon'
+import { BaseButton } from '@/components/Button'
 
 const appStore = useAppStore()
 
@@ -969,16 +969,16 @@ const schema = reactive<FormSchema[]>([
         },
         leftFooter: () => {
           return (
-            <ElButton class="transfer-footer" size="small">
+            <BaseButton class="transfer-footer" size="small">
               Operation
-            </ElButton>
+            </BaseButton>
           )
         },
         rightFooter: () => {
           return (
-            <ElButton class="transfer-footer" size="small">
+            <BaseButton class="transfer-footer" size="small">
               Operation
-            </ElButton>
+            </BaseButton>
           )
         }
       }
@@ -1052,11 +1052,7 @@ const schema = reactive<FormSchema[]>([
       slots: {
         default: (options: RadioOption[]) => {
           return options?.map((v) => {
-            return (
-              <ElRadio label={v.value}>
-                {v.label}({v.value})
-              </ElRadio>
-            )
+            return <ElRadio label={v.label + `(${v.value})`} value={v.value} />
           })
         }
       }
@@ -1097,11 +1093,7 @@ const schema = reactive<FormSchema[]>([
       slots: {
         default: (options: RadioOption[]) => {
           return options?.map((v) => {
-            return (
-              <ElRadioButton label={v.value}>
-                {v.label}({v.value})
-              </ElRadioButton>
-            )
+            return <ElRadioButton label={v.label + `(${v.value})`} value={v.value} />
           })
         }
       }
@@ -1157,11 +1149,7 @@ const schema = reactive<FormSchema[]>([
       slots: {
         default: (options: CheckboxOption[]) => {
           return options?.map((v) => {
-            return (
-              <ElCheckbox label={v.value}>
-                {v.label}({v.value})
-              </ElCheckbox>
-            )
+            return <ElCheckbox label={v.label + `(${v.value})`} value={v.value} />
           })
         }
       }
@@ -1214,11 +1202,7 @@ const schema = reactive<FormSchema[]>([
       slots: {
         default: (options: CheckboxOption[]) => {
           return options?.map((v) => {
-            return (
-              <ElCheckboxButton label={v.value}>
-                {v.label}({v.value})
-              </ElCheckboxButton>
-            )
+            return <ElCheckboxButton label={v.label + `(${v.value})`} value={v.value} />
           })
         }
       }
@@ -1722,7 +1706,7 @@ const schema = reactive<FormSchema[]>([
         )
       },
       slots: {
-        default: () => <ElButton type="primary">Click to upload</ElButton>,
+        default: () => <BaseButton type="primary">Click to upload</BaseButton>,
         tip: () => <div class="el-upload__tip">jpg/png files with a size less than 500KB.</div>
       }
     }
@@ -1785,6 +1769,25 @@ const schema = reactive<FormSchema[]>([
     component: 'IconPicker',
     label: t('formDemo.default'),
     value: 'tdesign:archway'
+  },
+  {
+    field: 'field89',
+    component: 'Divider',
+    label: t('formDemo.iAgree')
+  },
+  {
+    field: 'field90',
+    component: 'IAgree',
+    label: t('formDemo.default'),
+    componentProps: {
+      text: '我同意《用户协议》',
+      link: [
+        {
+          text: '《用户协议》',
+          url: 'https://element-plus.org/'
+        }
+      ]
+    }
   }
 ])
 </script>

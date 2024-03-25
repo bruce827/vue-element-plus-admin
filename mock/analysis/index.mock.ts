@@ -1,19 +1,17 @@
-import config from '@/config/axios/config'
+import { SUCCESS_CODE } from '@/constants'
 import { MockMethod } from 'vite-plugin-mock'
-
-const { code } = config
 
 const timeout = 1000
 
 export default [
   // 分析页统计接口
   {
-    url: '/analysis/total',
+    url: '/mock/analysis/total',
     method: 'get',
     timeout,
     response: () => {
       return {
-        code: code,
+        code: SUCCESS_CODE,
         data: {
           users: 102400,
           messages: 81212,
@@ -25,12 +23,12 @@ export default [
   },
   // 用户来源
   {
-    url: '/analysis/userAccessSource',
+    url: '/mock/analysis/userAccessSource',
     method: 'get',
     timeout,
     response: () => {
       return {
-        code: code,
+        code: SUCCESS_CODE,
         data: [
           { value: 1000, name: 'analysis.directAccess' },
           { value: 310, name: 'analysis.mailMarketing' },
@@ -43,12 +41,12 @@ export default [
   },
   // 每周用户活跃量
   {
-    url: '/analysis/weeklyUserActivity',
+    url: '/mock/analysis/weeklyUserActivity',
     method: 'get',
     timeout,
     response: () => {
       return {
-        code: code,
+        code: SUCCESS_CODE,
         data: [
           { value: 13253, name: 'analysis.monday' },
           { value: 34235, name: 'analysis.tuesday' },
@@ -63,12 +61,12 @@ export default [
   },
   // 每月销售额
   {
-    url: '/analysis/monthlySales',
+    url: '/mock/analysis/monthlySales',
     method: 'get',
     timeout,
     response: () => {
       return {
-        code: code,
+        code: SUCCESS_CODE,
         data: [
           { estimate: 100, actual: 120, name: 'analysis.january' },
           { estimate: 120, actual: 82, name: 'analysis.february' },
