@@ -312,6 +312,14 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
         meta: {
           title: t('router.waterfall')
         }
+      },
+      {
+        path: 'ribbon-tag',
+        component: () => import('@/views/Components/Ribbon.vue'),
+        name: 'RibbonTag',
+        meta: {
+          title: '丝带标签'
+        }
       }
     ]
   },

@@ -1,7 +1,7 @@
 {
   "name": "robot-inspection",
-  "version": "2.3.0",
-  "description": "机器人巡检平台",
+  "version": "0.9.1",
+  "description": "小集能源管控",
   "author": "bruce",
   "private": false,
   "scripts": {

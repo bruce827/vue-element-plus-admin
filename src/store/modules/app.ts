@@ -50,19 +50,20 @@ export const useAppStore = defineStore('app', {
       collapse: false, // 折叠菜单
       uniqueOpened: false, // 是否只保持一个子菜单的展开
       hamburger: true, // 折叠图标
-      screenfull: true, // 全屏图标
+      screenfull: false, // 全屏图标
       size: false, // 尺寸图标
       locale: false, // 多语言图标
-      orgSelect: true, // 组织机构选择
-      tagsView: true, // 标签页
-      tagsViewIcon: true, // 是否显示标签图标
-      logo: true, // logo
+      orgSelect: false, // 组织机构选择
+      tagsView: false, // 标签页
+      tagsViewIcon: false, // 是否显示标签图标
+      logo: false, // logo
       fixedHeader: true, // 固定toolheader
       footer: true, // 显示页脚
       greyMode: false, // 是否开始灰色模式，用于特殊悼念日
       dynamicRouter: getStorage('dynamicRouter'), // 是否动态路由
       serverDynamicRouter: getStorage('serverDynamicRouter'), // 是否服务端渲染动态路由
       fixedMenu: getStorage('fixedMenu'), // 是否固定菜单
+      // classic  topLeft  top  cutMenu
       layout: getStorage('layout') || 'classic', // layout布局
       isDark: getStorage('isDark'), // 是否是暗黑模式
       currentSize: getStorage('default') || 'default', // 组件尺寸

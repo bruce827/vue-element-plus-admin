@@ -160,14 +160,12 @@ watch(
 
 // 登录
 const signIn = async () => {
-  debugger
   const formRef = await getElFormExpose()
   await formRef?.validate(async (isValid) => {
     if (isValid) {
       loading.value = true
       const formData = await getFormData<UserType>()
       // json2formData()
-      debugger
       try {
         const res = await loginApi(formData)
 

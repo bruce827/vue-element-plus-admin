@@ -73,7 +73,9 @@ export default defineComponent({
           {orgSelect.value ? (
             <OrgSelect class="custom-hover" color="var(--top-header-text-color)"></OrgSelect>
           ) : undefined}
-          <UserInfo></UserInfo>
+           {/*
+              <UserInfo/>
+             */}
         </div>
       </div>
     )

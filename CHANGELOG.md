@@ -142,3 +142,21 @@ All notable changes to this project will be documented in this file. See [standa
 - 接口文档v1.0（notion）
 
 ### Performance Improvements
+
+## [V0.9.1] (2024-03-27) 小集能源管控平台框架初始化
+
+### Features
+
+- 框架初始化
+### Bug Fixes
+
+- 修复插件依赖版本兼容问题
+
+### Docs
+
+- 项目范围文档v0.9
+
+
+### Performance Improvements
+
+- 增加丝带标签组件 
