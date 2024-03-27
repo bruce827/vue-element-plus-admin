@@ -20,13 +20,10 @@ const prop = defineProps({
     src: 'src',
     height: 'height'
   }),
-  cols: propTypes.number.def(undefined),
   loadingText: propTypes.string.def('加载中...'),
   loading: propTypes.bool.def(false),
   end: propTypes.bool.def(false),
-  endText: propTypes.string.def('没有更多了'),
-  autoCenter: propTypes.bool.def(true),
-  layout: propTypes.oneOf(['javascript', 'flex']).def('flex')
+  endText: propTypes.string.def('没有更多了')
 })
 
 const wrapEl = ref<HTMLDivElement>()
@@ -40,7 +37,7 @@ const wrapWidth = ref(0)
 const loadMore = ref<HTMLDivElement>()
 
 // 首先确定列数 = 页面宽度 / 图片宽度
-const innerCols = ref(0)
+const cols = ref(0)
 
 const filterData = ref<any[]>([])
 
@@ -52,11 +49,11 @@ const filterWaterfall = async () => {
 
   const container = unref(wrapEl) as HTMLElement
   if (!container) return
-  innerCols.value = prop.cols ?? Math.floor(container.clientWidth / (width + gap))
+  cols.value = Math.floor(container.clientWidth / (width + gap))
 
   const length = data.length
   for (let i = 0; i < length; i++) {
-    if (i < unref(innerCols)) {
+    if (i < unref(cols)) {
       heights.value[i] = data[i][props.height as string]
       filterData.value.push({
         ...data[i],
@@ -69,7 +66,7 @@ const filterWaterfall = async () => {
       let minHeight = heights.value[0]
       let index = 0
       // 找出最小高度
-      for (let j = 1; j < unref(innerCols); j++) {
+      for (let j = 1; j < unref(cols); j++) {
         if (unref(heights)[j] < minHeight) {
           minHeight = unref(heights)[j]
           index = j
@@ -86,42 +83,14 @@ const filterWaterfall = async () => {
     }
   }
   wrapHeight.value = Math.max(...unref(heights))
-  wrapWidth.value = unref(innerCols) * (width + gap) - gap
-}
-
-const flexWaterfall = async () => {
-  const { width, gap } = prop
-  const data = prop.data as any[]
-  await nextTick()
-
-  const container = unref(wrapEl) as HTMLElement
-  if (!container) return
-  innerCols.value = prop.cols ?? Math.floor(container.clientWidth / (width + gap))
-
-  const length = data.length
-  // 根据列数，创建数组
-  const arr = new Array(unref(innerCols)).fill([])
-  // 循环data，依次插入到arr中
-  for (let i = 0; i < length; i++) {
-    const index = i % unref(innerCols)
-    arr[index] = [...arr[index], data[i]]
-  }
-  filterData.value = arr
-}
-
-const initLayout = () => {
-  const { layout } = prop
-  if (layout === 'javascript') {
-    filterWaterfall()
-  } else if (layout === 'flex') {
-    flexWaterfall()
-  }
+  wrapWidth.value = unref(cols) * (width + gap) - gap
 }
 
 watch(
-  () => [prop.data, prop.cols],
-  () => {
-    initLayout()
+  () => prop.data,
+  async () => {
+    await nextTick()
+    filterWaterfall()
   },
   {
     immediate: true
@@ -130,7 +99,7 @@ watch(
 
 onMounted(() => {
   if (unref(prop.reset)) {
-    useEventListener(window, 'resize', debounce(initLayout, 300))
+    useEventListener(window, 'resize', debounce(filterWaterfall, 300))
   }
   useIntersectionObserver(
     unref(loadMore),
@@ -148,87 +117,41 @@ onMounted(() => {
 
 <template>
   <div
-    :class="[
-      prefixCls,
-      'flex',
-      'items-center',
-      {
-        'justify-center': autoCenter
-      }
-    ]"
+    :class="[prefixCls, 'flex', 'justify-center', 'items-center']"
     ref="wrapEl"
     :style="{
-      height: `${layout === 'javascript' ? wrapHeight + 40 : 'auto'}px`
+      height: `${wrapHeight + 40}px`
     }"
   >
-    <template v-if="layout === 'javascript'">
-      <div class="relative" :style="{ width: `${wrapWidth}px`, height: `${wrapHeight + 40}px` }">
-        <div
-          v-for="(item, $index) in filterData"
-          :class="[
-            `${prefixCls}-item__${$index}`,
-            {
-              absolute: layout === 'javascript'
-            }
-          ]"
-          :key="`water-${$index}`"
-          :style="{
-            width: `${width}px`,
-            height: `${item[props.height as string]}px`,
-            top: `${item.top}px`,
-            left: `${item.left}px`
-          }"
-        >
-          <img :src="item[props.src as string]" class="w-full h-full block" alt="" srcset="" />
-        </div>
-        <div
-          ref="loadMore"
-          class="h-40px flex justify-center absolute w-full"
-          :style="{
-            top: `${wrapHeight + gap}px`
-          }"
-        >
-          {{ end ? endText : loadingText }}
-        </div>
-      </div>
-    </template>
-    <template v-else-if="layout === 'flex'">
+    <div
+      class="relative"
+      :style="{
+        width: `${wrapWidth}px`,
+        height: `${wrapHeight + 40}px`
+      }"
+    >
       <div
-        class="relative flex pb-40px"
+        v-for="(item, $index) in filterData"
+        :class="[`${prefixCls}-item__${$index}`, 'absolute']"
+        :key="`water-${$index}`"
         :style="{
-          width: cols ? '100%' : 'auto'
+          width: `${width}px`,
+          height: `${item[props.height as string]}px`,
+          top: `${item.top}px`,
+          left: `${item.left}px`
         }"
       >
-        <div
-          v-for="(item, $index) in filterData"
-          :key="`waterWrap-${$index}`"
-          class="flex-1"
-          :style="{
-            marginRight: $index === filterData.length - 1 ? '0' : `${gap}px`
-          }"
-        >
-          <div
-            v-for="(child, i) in item"
-            :key="`waterWrap-${$index}-${i}`"
-            :style="{
-              marginBottom: `${gap}px`,
-              width: cols ? '100%' : `${width}px`,
-              height: cols ? 'auto' : `${child[props.height as string]}px`
-            }"
-          >
-            <img :src="child[props.src as string]" class="w-full h-full block" alt="" srcset="" />
-          </div>
-        </div>
-        <div
-          ref="loadMore"
-          class="h-40px flex justify-center absolute w-full items-center"
-          :style="{
-            bottom: 0
-          }"
-        >
-          {{ end ? endText : loadingText }}
-        </div>
+        <img :src="item[props.src as string]" class="w-full h-full block" alt="" srcset="" />
       </div>
-    </template>
+      <div
+        ref="loadMore"
+        class="h-40px flex justify-center absolute w-full"
+        :style="{
+          top: `${wrapHeight + gap}px`
+        }"
+      >
+        {{ end ? endText : loadingText }}
+      </div>
+    </div>
   </div>
 </template>

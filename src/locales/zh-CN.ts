@@ -48,8 +48,7 @@ export default {
     lengthRange: '长度在 {min} 到 {max} 个字符',
     notSpace: '不能包含空格',
     notSpecialCharacters: '不能包含特殊字符',
-    isEqual: '两次输入不一致',
-    setting: '设置'
+    isEqual: '两次输入不一致'
   },
   lock: {
     lockScreen: '锁定屏幕',
@@ -82,7 +81,7 @@ export default {
     sizeIcon: '尺寸图标',
     localeIcon: '多语言图标',
     tagsView: '标签页',
-    logo: 'Logo',
+    logo: '标志',
     greyMode: '灰色模式',
     fixedHeader: '固定头部',
     headerTheme: '头部主题',
@@ -119,8 +118,7 @@ export default {
     usernamePlaceholder: '请输入用户名',
     passwordPlaceholder: '请输入密码',
     code: '验证码',
-    codePlaceholder: '请输入验证码',
-    getCode: '获取验证码'
+    codePlaceholder: '请输入验证码'
   },
   router: {
     login: '登录',
@@ -177,15 +175,7 @@ export default {
     details: '详情页',
     iconPicker: '图标选择器',
     request: '请求',
-    waterfall: '瀑布流',
-    imageCropping: '图片裁剪',
-    videoPlayer: '视频播放器',
-    tableVideoPreview: '表格视频预览',
-    cardTable: '卡片表格',
-    personalCenter: '个人中心',
-    personal: '个人',
-    avatars: '头像列表',
-    iAgree: '我同意'
+    waterfall: '瀑布流'
   },
   permission: {
     hasPermission: '请设置操作权限值'
@@ -329,8 +319,7 @@ export default {
     lazyLoad: '懒加载',
     upload: '上传',
     userAvatar: '用户头像',
-    iconPicker: '图标选择器',
-    iAgree: '我同意'
+    iconPicker: '图标选择器'
   },
   guideDemo: {
     guide: '引导页',
@@ -456,9 +445,7 @@ export default {
     fixedHeaderOrAuto: '固定头部/自动',
     getSelections: '获取多选数据',
     preview: '封面',
-    showOrHiddenSortable: '显示/隐藏排序',
-    videoPreview: '视频预览',
-    cardTable: '卡片表格'
+    showOrHiddenSortable: '显示/隐藏排序'
   },
   richText: {
     richText: '富文本',
@@ -534,7 +521,7 @@ export default {
   menu: {
     menuName: '菜单名称',
     icon: '图标',
-    permission: '按钮权限',
+    permission: '权限标识',
     component: '组件',
     path: '路径',
     status: '状态',
@@ -556,8 +543,5 @@ export default {
   inputPasswordDemo: {
     title: '密码输入框',
     inputPasswordDes: '基于 ElementPlus 的 Input 组件二次封装'
-  },
-  avatarsDemo: {
-    title: '头像列表组件，基于element-plus的Avatar组件二次封装'
   }
 }

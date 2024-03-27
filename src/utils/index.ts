@@ -45,10 +45,6 @@ export const setCssVar = (prop: string, val: any, dom = document.documentElement
   dom.style.setProperty(prop, val)
 }
 
-export const getCssVar = (prop: string, dom = document.documentElement) => {
-  return getComputedStyle(dom).getPropertyValue(prop)
-}
-
 /**
  * 查找数组对象的某个下标
  * @param {Array} ary 查找的数组
@@ -145,13 +141,6 @@ export function sleep(time) {
 export function json2formData(obj: Object) {
   const formData = new FormData()
   Object.keys(obj).map((key) => {
-
-/**
- * 把对象转为formData
- */
-export function objToFormData(obj: Recordable) {
-  const formData = new FormData()
-  Object.keys(obj).forEach((key) => {
     formData.append(key, obj[key])
   })
   return formData

@@ -4,7 +4,7 @@ import { getMenuListApi } from '@/api/menu'
 import { useTable } from '@/hooks/web/useTable'
 import { useI18n } from '@/hooks/web/useI18n'
 import { Table, TableColumn } from '@/components/Table'
-import { ElTag } from 'element-plus'
+import { ElButton, ElTag } from 'element-plus'
 import { Icon } from '@/components/Icon'
 import { Search } from '@/components/Search'
 import { FormSchema } from '@/components/Form'
@@ -12,7 +12,6 @@ import { ContentWrap } from '@/components/ContentWrap'
 import Write from './components/Write.vue'
 import Detail from './components/Detail.vue'
 import { Dialog } from '@/components/Dialog'
-import { BaseButton } from '@/components/Button'
 
 const { t } = useI18n()
 
@@ -36,13 +35,7 @@ const tableColumns = reactive<TableColumn[]>([
   },
   {
     field: 'meta.title',
-    label: t('menu.menuName'),
-    slots: {
-      default: (data: any) => {
-        const title = data.row.meta.title
-        return <>{title}</>
-      }
-    }
+    label: t('menu.menuName')
   },
   {
     field: 'meta.icon',
@@ -110,13 +103,13 @@ const tableColumns = reactive<TableColumn[]>([
         const row = data.row
         return (
           <>
-            <BaseButton type="primary" onClick={() => action(row, 'edit')}>
+            <ElButton type="primary" onClick={() => action(row, 'edit')}>
               {t('exampleDemo.edit')}
-            </BaseButton>
-            <BaseButton type="success" onClick={() => action(row, 'detail')}>
+            </ElButton>
+            <ElButton type="success" onClick={() => action(row, 'detail')}>
               {t('exampleDemo.detail')}
-            </BaseButton>
-            <BaseButton type="danger">{t('exampleDemo.del')}</BaseButton>
+            </ElButton>
+            <ElButton type="danger">{t('exampleDemo.del')}</ElButton>
           </>
         )
       }
@@ -180,7 +173,7 @@ const save = async () => {
   <ContentWrap>
     <Search :schema="searchSchema" @reset="setSearchParams" @search="setSearchParams" />
     <div class="mb-10px">
-      <BaseButton type="primary" @click="AddAction">{{ t('exampleDemo.add') }}</BaseButton>
+      <ElButton type="primary" @click="AddAction">{{ t('exampleDemo.add') }}</ElButton>
     </div>
     <Table
       :columns="tableColumns"
@@ -198,15 +191,10 @@ const save = async () => {
     <Detail v-if="actionType === 'detail'" :current-row="currentRow" />
 
     <template #footer>
-      <BaseButton
-        v-if="actionType !== 'detail'"
-        type="primary"
-        :loading="saveLoading"
-        @click="save"
-      >
+      <ElButton v-if="actionType !== 'detail'" type="primary" :loading="saveLoading" @click="save">
         {{ t('exampleDemo.save') }}
-      </BaseButton>
-      <BaseButton @click="dialogVisible = false">{{ t('dialogDemo.close') }}</BaseButton>
+      </ElButton>
+      <ElButton @click="dialogVisible = false">{{ t('dialogDemo.close') }}</ElButton>
     </template>
   </Dialog>
 </template>

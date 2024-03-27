@@ -230,7 +230,7 @@ export default defineComponent({
       const { schema = [], isCol } = unref(getProps)
 
       return schema
-        .filter((v) => !v.remove && !v.hidden)
+        .filter((v) => !v.remove)
         .map((item) => {
           // 如果是 Divider 组件，需要自己占用一行
           const isDivider = item.component === 'Divider'
@@ -323,31 +323,13 @@ export default defineComponent({
                 }
               })
 
-              return item.component === ComponentNameEnum.UPLOAD ? (
-                <Com
-                  vModel:file-list={itemVal.value}
-                  ref={(el: any) => setComponentRefMap(el, item.field)}
-                  {...(autoSetPlaceholder && setTextPlaceholder(item))}
-                  {...setComponentProps(item)}
-                  style={
-                    item.componentProps?.style || {
-                      width: '100%'
-                    }
-                  }
-                >
-                  {{ ...slotsMap }}
-                </Com>
-              ) : (
+              return (
                 <Com
                   vModel={itemVal.value}
                   ref={(el: any) => setComponentRefMap(el, item.field)}
                   {...(autoSetPlaceholder && setTextPlaceholder(item))}
                   {...setComponentProps(item)}
-                  style={
-                    item.componentProps?.style || {
-                      width: '100%'
-                    }
-                  }
+                  style={item.componentProps?.style || {}}
                 >
                   {{ ...slotsMap }}
                 </Com>
@@ -400,10 +382,6 @@ export default defineComponent({
         {...getFormBindValue()}
         model={unref(getProps).isCustom ? unref(getProps).model : formModel}
         class={prefixCls}
-        // @ts-ignore
-        onSubmit={(e: Event) => {
-          e.preventDefault()
-        }}
       >
         {{
           // 如果需要自定义，就什么都不渲染，而是提供默认插槽
@@ -424,15 +402,7 @@ export default defineComponent({
   margin-left: 0 !important;
 }
 
-.@{elNamespace}-form--inline {
-  :deep(.el-form-item__content) {
-    & > :first-child {
-      min-width: 229.5px;
-    }
-  }
-  .@{elNamespace}-input-number {
-    // 229.5px是兼容el-input-number的最小宽度,
-    min-width: 229.5px;
-  }
+.@{elNamespace}-form--inline .@{elNamespace}-input {
+  width: 245px;
 }
 </style>

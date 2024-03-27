@@ -13,14 +13,15 @@ export const useRenderCheckbox = () => {
       item.component === ComponentNameEnum.CHECKBOX_GROUP ? ElCheckbox : ElCheckboxButton
     ) as ReturnType<typeof defineComponent>
     return componentProps?.options?.map((option) => {
-      const { ...other } = option
+      const { value, ...other } = option
       return (
         <Com
           {...other}
           disabled={option[disabledAlias || 'disabled']}
-          label={option[labelAlias || 'label']}
-          value={option[valueAlias || 'value']}
-        ></Com>
+          label={option[valueAlias || 'value']}
+        >
+          {option[labelAlias || 'label']}
+        </Com>
       )
     })
   }

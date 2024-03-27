@@ -8,7 +8,7 @@ interface Option {
 
 const emitter = mitt()
 
-export const useEventBus = (option?: Option) => {
+export const useEmitt = (option?: Option) => {
   if (option) {
     emitter.on(option.name, option.callback)
 
@@ -18,9 +18,6 @@ export const useEventBus = (option?: Option) => {
   }
 
   return {
-    on: emitter.on,
-    off: emitter.off,
-    emit: emitter.emit,
-    all: emitter.all
+    emitter
   }
 }

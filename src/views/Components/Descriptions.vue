@@ -3,7 +3,7 @@ import { Descriptions } from '@/components/Descriptions'
 import { useI18n } from '@/hooks/web/useI18n'
 import { reactive } from 'vue'
 import { Form } from '@/components/Form'
-import { ElFormItem, ElInput } from 'element-plus'
+import { ElFormItem, ElInput, ElButton } from 'element-plus'
 import { useValidator } from '@/hooks/web/useValidator'
 import { useForm } from '@/hooks/web/useForm'
 import { DescriptionsSchema } from '@/components/Descriptions'
@@ -42,8 +42,7 @@ const schema = reactive<DescriptionsSchema[]>([
   },
   {
     field: 'addr',
-    label: t('descriptionsDemo.addr'),
-    span: 24
+    label: t('descriptionsDemo.addr')
   }
 ])
 
@@ -126,8 +125,7 @@ const schema2 = reactive<DescriptionsSchema[]>([
           </ElFormItem>
         )
       }
-    },
-    span: 24
+    }
   }
 ])
 
@@ -174,7 +172,7 @@ const formValidation = async () => {
       class="mt-20px"
     />
     <div class="text-center mt-10px">
-      <BaseButton @click="formValidation"> {{ t('formDemo.formValidation') }} </BaseButton>
+      <ElButton @click="formValidation"> {{ t('formDemo.formValidation') }} </ElButton>
     </div>
   </Form>
 </template>

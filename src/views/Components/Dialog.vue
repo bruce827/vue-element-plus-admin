@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { ContentWrap } from '@/components/ContentWrap'
 import { Dialog } from '@/components/Dialog'
+import { ElButton } from 'element-plus'
 import { useI18n } from '@/hooks/web/useI18n'
 import { ref, reactive } from 'vue'
 import { Form, FormSchema } from '@/components/Form'
 import { useValidator } from '@/hooks/web/useValidator'
 import { getDictOneApi } from '@/api/common'
 import { useForm } from '@/hooks/web/useForm'
-import Echart from './Echart.vue'
 
 const { required } = useValidator()
 
@@ -105,26 +105,26 @@ const formSubmit = async () => {
 
 <template>
   <ContentWrap :title="t('dialogDemo.dialog')" :message="t('dialogDemo.dialogDes')">
-    <BaseButton type="primary" @click="dialogVisible = !dialogVisible">
+    <ElButton type="primary" @click="dialogVisible = !dialogVisible">
       {{ t('dialogDemo.open') }}
-    </BaseButton>
+    </ElButton>
 
-    <BaseButton type="primary" @click="dialogVisible2 = !dialogVisible2">
+    <ElButton type="primary" @click="dialogVisible2 = !dialogVisible2">
       {{ t('dialogDemo.combineWithForm') }}
-    </BaseButton>
+    </ElButton>
 
     <Dialog v-model="dialogVisible" :title="t('dialogDemo.dialog')">
-      <Echart />
+      <div v-for="v in 10000" :key="v">{{ v }}</div>
       <template #footer>
-        <BaseButton @click="dialogVisible = false">{{ t('dialogDemo.close') }}</BaseButton>
+        <ElButton @click="dialogVisible = false">{{ t('dialogDemo.close') }}</ElButton>
       </template>
     </Dialog>
 
     <Dialog v-model="dialogVisible2" :title="t('dialogDemo.dialog')">
       <Form :schema="schema" @register="formRegister" />
       <template #footer>
-        <BaseButton type="primary" @click="formSubmit">{{ t('dialogDemo.submit') }}</BaseButton>
-        <BaseButton @click="dialogVisible2 = false">{{ t('dialogDemo.close') }}</BaseButton>
+        <ElButton type="primary" @click="formSubmit">{{ t('dialogDemo.submit') }}</ElButton>
+        <ElButton @click="dialogVisible2 = false">{{ t('dialogDemo.close') }}</ElButton>
       </template>
     </Dialog>
   </ContentWrap>

@@ -1,4 +1,7 @@
-import { SUCCESS_CODE } from '@/constants'
+import config from '@/config/axios/config'
+import { MockMethod } from 'vite-plugin-mock'
+
+const { code } = config
 
 const timeout = 1000
 
@@ -36,24 +39,24 @@ const dictObj: Recordable = {
 export default [
   // 字典接口
   {
-    url: '/mock/dict/list',
+    url: '/dict/list',
     method: 'get',
     timeout,
     response: () => {
       return {
-        code: SUCCESS_CODE,
+        code: code,
         data: dictObj
       }
     }
   },
   // 获取某个字典
   {
-    url: '/mock/dict/one',
+    url: '/dict/one',
     method: 'get',
     timeout,
     response: () => {
       return {
-        code: SUCCESS_CODE,
+        code: code,
         data: [
           {
             label: 'test1',
@@ -71,4 +74,4 @@ export default [
       }
     }
   }
-]
+] as MockMethod[]

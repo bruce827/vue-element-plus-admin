@@ -24,7 +24,6 @@ const rules = reactive({
   status: [required()],
   createTime: [required()]
   // remark: [required()]
-  status: [required()]
 })
 
 const { formRegister, formMethods } = useForm()

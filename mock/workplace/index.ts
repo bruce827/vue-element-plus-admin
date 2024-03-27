@@ -1,16 +1,19 @@
-import { SUCCESS_CODE } from '@/constants'
+import config from '@/config/axios/config'
+import { MockMethod } from 'vite-plugin-mock'
+
+const { code } = config
 
 const timeout = 1000
 
 export default [
   // 获取统计
   {
-    url: '/mock/workplace/total',
+    url: '/workplace/total',
     method: 'get',
     timeout,
     response: () => {
       return {
-        code: SUCCESS_CODE,
+        code: code,
         data: {
           project: 40,
           access: 2340,
@@ -21,12 +24,12 @@ export default [
   },
   // 获取项目
   {
-    url: '/mock/workplace/project',
+    url: '/workplace/project',
     method: 'get',
     timeout,
     response: () => {
       return {
-        code: SUCCESS_CODE,
+        code: code,
         data: [
           {
             name: 'Github',
@@ -76,12 +79,12 @@ export default [
   },
   // 获取动态
   {
-    url: '/mock/workplace/dynamic',
+    url: '/workplace/dynamic',
     method: 'get',
     timeout,
     response: () => {
       return {
-        code: SUCCESS_CODE,
+        code: code,
         data: [
           {
             keys: ['workplace.push', 'Github'],
@@ -113,12 +116,12 @@ export default [
   },
   // 获取团队信息
   {
-    url: '/mock/workplace/team',
+    url: '/workplace/team',
     method: 'get',
     timeout,
     response: () => {
       return {
-        code: SUCCESS_CODE,
+        code: code,
         data: [
           {
             name: 'Github',
@@ -150,12 +153,12 @@ export default [
   },
   // 获取指数
   {
-    url: '/mock/workplace/radar',
+    url: '/workplace/radar',
     method: 'get',
     timeout,
     response: () => {
       return {
-        code: SUCCESS_CODE,
+        code: code,
         data: [
           { name: 'workplace.quote', max: 65, personal: 42, team: 50 },
           { name: 'workplace.contribution', max: 160, personal: 30, team: 140 },
@@ -166,4 +169,4 @@ export default [
       }
     }
   }
-]
+] as MockMethod[]

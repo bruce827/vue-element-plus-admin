@@ -5,7 +5,7 @@ import en from 'element-plus/es/locale/lang/en'
 import { useStorage } from '@/hooks/web/useStorage'
 import { LocaleDropdownType } from '@/components/LocaleDropdown'
 
-const { getStorage, setStorage } = useStorage('localStorage')
+const { getStorage, setStorage } = useStorage()
 
 const elLocaleMap = {
   'zh-CN': zhCn,

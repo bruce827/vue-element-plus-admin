@@ -3,7 +3,7 @@ import { ContentWrap } from '@/components/ContentWrap'
 import { Search } from '@/components/Search'
 import { Dialog } from '@/components/Dialog'
 import { useI18n } from '@/hooks/web/useI18n'
-import { ElTag } from 'element-plus'
+import { ElButton, ElTag } from 'element-plus'
 import { Table } from '@/components/Table'
 import {
   getDepartmentApi,
@@ -17,7 +17,6 @@ import { ref, unref, reactive } from 'vue'
 import Write from './components/Write.vue'
 import Detail from './components/Detail.vue'
 import { CrudSchema, useCrudSchemas } from '@/hooks/web/useCrudSchemas'
-import { BaseButton } from '@/components/Button'
 
 const ids = ref<string[]>([])
 
@@ -186,7 +185,6 @@ const crudSchemas = reactive<CrudSchema[]>([
         type: 'date',
         valueFormat: 'YYYY-MM-DD'
       }
-      hidden: true
     }
   },
   {
@@ -231,16 +229,9 @@ const crudSchemas = reactive<CrudSchema[]>([
         default: (data: any) => {
           return (
             <>
-              <BaseButton type="primary" onClick={() => action(data.row, 'edit')}>
+              <ElButton type="primary" onClick={() => action(data.row, 'edit')}>
                 {t('exampleDemo.edit')}
               </ElButton>
-              </BaseButton>
-              <BaseButton type="success" onClick={() => action(data.row, 'detail')}>
-                {t('exampleDemo.detail')}
-              </BaseButton>
-              <BaseButton type="danger" onClick={() => delData(data.row)}>
-                {t('exampleDemo.del')}
-              </BaseButton>
             </>
           )
         }
@@ -313,10 +304,10 @@ const save = async () => {
   <ContentWrap>
     <Search :schema="allSchemas.searchSchema" @search="setSearchParams" @reset="setSearchParams" />
     <div class="mb-10px">
-      <BaseButton type="primary" @click="AddAction">{{ t('exampleDemo.add') }}</BaseButton>
-      <BaseButton :loading="delLoading" type="danger" @click="delData(null)">
+      <ElButton type="primary" @click="AddAction">{{ t('exampleDemo.add') }}</ElButton>
+      <ElButton :loading="delLoading" type="danger" @click="delData(null)">
         {{ t('exampleDemo.del') }}
-      </BaseButton>
+      </ElButton>
     </div>
 
     <Table
@@ -347,15 +338,10 @@ const save = async () => {
     />
 
     <template #footer>
-      <BaseButton
-        v-if="actionType !== 'detail'"
-        type="primary"
-        :loading="saveLoading"
-        @click="save"
-      >
+      <ElButton v-if="actionType !== 'detail'" type="primary" :loading="saveLoading" @click="save">
         {{ t('exampleDemo.save') }}
-      </BaseButton>
-      <BaseButton @click="dialogVisible = false">{{ t('dialogDemo.close') }}</BaseButton>
+      </ElButton>
+      <ElButton @click="dialogVisible = false">{{ t('dialogDemo.close') }}</ElButton>
     </template>
   </Dialog>
 </template>

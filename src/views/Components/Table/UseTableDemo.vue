@@ -3,10 +3,9 @@ import { ContentWrap } from '@/components/ContentWrap'
 import { useI18n } from '@/hooks/web/useI18n'
 import { Table, TableColumn, TableSlotDefault } from '@/components/Table'
 import { getTableListApi } from '@/api/table'
-import { ref, reactive, unref, onMounted } from 'vue'
-import { ElTag } from 'element-plus'
+import { ref, reactive, unref } from 'vue'
+import { ElTag, ElButton } from 'element-plus'
 import { useTable } from '@/hooks/web/useTable'
-import { BaseButton } from '@/components/Button'
 
 const { tableRegister, tableMethods, tableState } = useTable({
   fetchDataApi: async () => {
@@ -26,91 +25,89 @@ const { setProps, setColumn, getElTableExpose, addColumn, delColumn, refresh } =
 
 const { t } = useI18n()
 
-const columns = reactive<TableColumn[]>([])
-
-onMounted(() => {
-  setTimeout(() => {
-    setProps({
-      columns: [
-        {
-          field: 'expand',
-          type: 'expand',
-          slots: {
-            default: (data: TableSlotDefault) => {
-              const { row } = data
-              return (
-                <div class="ml-30px">
-                  <div>
-                    {t('tableDemo.title')}：{row.title}
-                  </div>
-                  <div>
-                    {t('tableDemo.author')}：{row.author}
-                  </div>
-                  <div>
-                    {t('tableDemo.displayTime')}：{row.display_time}
-                  </div>
-                </div>
-              )
-            }
-          }
-        },
-        {
-          field: 'selection',
-          type: 'selection'
-        },
-        {
-          field: 'index',
-          label: t('tableDemo.index'),
-          type: 'index'
-        },
-        {
-          field: 'title',
-          label: t('tableDemo.title')
-        },
-        {
-          field: 'author',
-          label: t('tableDemo.author')
-        },
-        {
-          field: 'display_time',
-          label: t('tableDemo.displayTime')
-        },
-        {
-          field: 'importance',
-          label: t('tableDemo.importance'),
-          formatter: (_: Recordable, __: TableColumn, cellValue: number) => {
-            return (
-              <ElTag type={cellValue === 1 ? 'success' : cellValue === 2 ? 'warning' : 'danger'}>
-                {cellValue === 1
-                  ? t('tableDemo.important')
-                  : cellValue === 2
-                    ? t('tableDemo.good')
-                    : t('tableDemo.commonly')}
-              </ElTag>
-            )
-          }
-        },
-        {
-          field: 'pageviews',
-          label: t('tableDemo.pageviews')
-        },
-        {
-          field: 'action',
-          label: t('tableDemo.action'),
-          slots: {
-            default: (data) => {
-              return (
-                <BaseButton type="primary" onClick={() => actionFn(data)}>
-                  {t('tableDemo.action')}
-                </BaseButton>
-              )
-            }
-          }
+const columns = reactive<TableColumn[]>([
+  {
+    field: 'expand',
+    type: 'expand',
+    slots: {
+      default: (data: TableSlotDefault) => {
+        const { row } = data
+        return (
+          <div class="ml-30px">
+            <div>
+              {t('tableDemo.title')}：{row.title}
+            </div>
+            <div>
+              {t('tableDemo.author')}：{row.author}
+            </div>
+            <div>
+              {t('tableDemo.displayTime')}：{row.display_time}
+            </div>
+          </div>
+        )
+      }
+    }
+  },
+  {
+    field: 'selection',
+    type: 'selection'
+  },
+  {
+    field: 'index',
+    label: t('tableDemo.index'),
+    type: 'index'
+  },
+  {
+    field: 'content',
+    label: t('tableDemo.header'),
+    children: [
+      {
+        field: 'title',
+        label: t('tableDemo.title')
+      },
+      {
+        field: 'author',
+        label: t('tableDemo.author')
+      },
+      {
+        field: 'display_time',
+        label: t('tableDemo.displayTime')
+      },
+      {
+        field: 'importance',
+        label: t('tableDemo.importance'),
+        formatter: (_: Recordable, __: TableColumn, cellValue: number) => {
+          return (
+            <ElTag type={cellValue === 1 ? 'success' : cellValue === 2 ? 'warning' : 'danger'}>
+              {cellValue === 1
+                ? t('tableDemo.important')
+                : cellValue === 2
+                ? t('tableDemo.good')
+                : t('tableDemo.commonly')}
+            </ElTag>
+          )
         }
-      ]
-    })
-  }, 2000)
-})
+      },
+      {
+        field: 'pageviews',
+        label: t('tableDemo.pageviews')
+      }
+    ]
+  },
+  {
+    field: 'action',
+    label: t('tableDemo.action'),
+    slots: {
+      default: (data) => {
+        return (
+          <ElButton type="primary" onClick={() => actionFn(data)}>
+            {t('tableDemo.action')}
+          </ElButton>
+        )
+      }
+    }
+  }
+])
 
 const actionFn = (data: TableSlotDefault) => {
   console.log(data)
@@ -177,9 +174,9 @@ const delOrAddAction = () => {
       slots: {
         default: (data) => {
           return (
-            <BaseButton type="primary" onClick={() => actionFn(data)}>
+            <ElButton type="primary" onClick={() => actionFn(data)}>
               {t('tableDemo.action')}
-            </BaseButton>
+            </ElButton>
           )
         }
       }
@@ -220,37 +217,35 @@ const getSelections = async () => {
 
 <template>
   <ContentWrap :title="`UseTable ${t('tableDemo.operate')}`" style="margin-bottom: 20px">
-    <BaseButton @click="showPagination(true)">
+    <ElButton @click="showPagination(true)">
       {{ t('tableDemo.show') }} {{ t('tableDemo.pagination') }}
-    </BaseButton>
-    <BaseButton @click="showPagination(false)">
+    </ElButton>
+    <ElButton @click="showPagination(false)">
       {{ t('tableDemo.hidden') }} {{ t('tableDemo.pagination') }}
-    </BaseButton>
+    </ElButton>
 
-    <BaseButton @click="reserveIndex(true)">{{ t('tableDemo.reserveIndex') }}</BaseButton>
-    <BaseButton @click="reserveIndex(false)">{{ t('tableDemo.restoreIndex') }}</BaseButton>
+    <ElButton @click="reserveIndex(true)">{{ t('tableDemo.reserveIndex') }}</ElButton>
+    <ElButton @click="reserveIndex(false)">{{ t('tableDemo.restoreIndex') }}</ElButton>
 
-    <BaseButton @click="showSelections(true)">{{ t('tableDemo.showSelections') }}</BaseButton>
-    <BaseButton @click="showSelections(false)">{{ t('tableDemo.hiddenSelections') }}</BaseButton>
+    <ElButton @click="showSelections(true)">{{ t('tableDemo.showSelections') }}</ElButton>
+    <ElButton @click="showSelections(false)">{{ t('tableDemo.hiddenSelections') }}</ElButton>
 
-    <BaseButton @click="changeTitle">{{ t('tableDemo.changeTitle') }}</BaseButton>
+    <ElButton @click="changeTitle">{{ t('tableDemo.changeTitle') }}</ElButton>
 
-    <BaseButton @click="showExpandedRows(true)">{{ t('tableDemo.showExpandedRows') }}</BaseButton>
-    <BaseButton @click="showExpandedRows(false)">{{
-      t('tableDemo.hiddenExpandedRows')
-    }}</BaseButton>
+    <ElButton @click="showExpandedRows(true)">{{ t('tableDemo.showExpandedRows') }}</ElButton>
+    <ElButton @click="showExpandedRows(false)">{{ t('tableDemo.hiddenExpandedRows') }}</ElButton>
 
-    <BaseButton @click="selectAllNone">{{ t('tableDemo.selectAllNone') }}</BaseButton>
+    <ElButton @click="selectAllNone">{{ t('tableDemo.selectAllNone') }}</ElButton>
 
-    <BaseButton @click="delOrAddAction">{{ t('tableDemo.delOrAddAction') }}</BaseButton>
+    <ElButton @click="delOrAddAction">{{ t('tableDemo.delOrAddAction') }}</ElButton>
 
-    <BaseButton @click="showOrHiddenStripe">{{ t('tableDemo.showOrHiddenStripe') }}</BaseButton>
+    <ElButton @click="showOrHiddenStripe">{{ t('tableDemo.showOrHiddenStripe') }}</ElButton>
 
-    <BaseButton @click="fixedHeaderOrAuto">{{ t('tableDemo.fixedHeaderOrAuto') }}</BaseButton>
+    <ElButton @click="fixedHeaderOrAuto">{{ t('tableDemo.fixedHeaderOrAuto') }}</ElButton>
 
-    <BaseButton @click="getSelections">{{ t('tableDemo.getSelections') }}</BaseButton>
+    <ElButton @click="getSelections">{{ t('tableDemo.getSelections') }}</ElButton>
 
-    <!-- <BaseButton @click="showOrHiddenSortable">{{ t('tableDemo.showOrHiddenSortable') }}</BaseButton> -->
+    <!-- <ElButton @click="showOrHiddenSortable">{{ t('tableDemo.showOrHiddenSortable') }}</ElButton> -->
   </ContentWrap>
   <ContentWrap :title="`UseTable ${t('tableDemo.example')}`">
     <Table

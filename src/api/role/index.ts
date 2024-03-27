@@ -1,5 +1,5 @@
-import request from '@/axios'
+import request from '@/config/axios'
 
 export const getRoleListApi = () => {
-  return request.get({ url: '/mock/role/table' })
+  return request.get({ url: '/role/table' })
 }

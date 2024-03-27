@@ -4,9 +4,8 @@ import { useI18n } from '@/hooks/web/useI18n'
 import { Table, TableColumn } from '@/components/Table'
 import { getTreeTableListApi } from '@/api/table'
 import { reactive, unref } from 'vue'
-import { ElTag } from 'element-plus'
+import { ElTag, ElButton } from 'element-plus'
 import { useTable } from '@/hooks/web/useTable'
-import { BaseButton } from '@/components/Button'
 
 const { tableRegister, tableState } = useTable({
   fetchDataApi: async () => {
@@ -60,8 +59,8 @@ const columns = reactive<TableColumn[]>([
               {cellValue === 1
                 ? t('tableDemo.important')
                 : cellValue === 2
-                  ? t('tableDemo.good')
-                  : t('tableDemo.commonly')}
+                ? t('tableDemo.good')
+                : t('tableDemo.commonly')}
             </ElTag>
           )
         }
@@ -78,9 +77,9 @@ const columns = reactive<TableColumn[]>([
     slots: {
       default: (data) => {
         return (
-          <BaseButton type="primary" onClick={() => actionFn(data)}>
+          <ElButton type="primary" onClick={() => actionFn(data)}>
             {t('tableDemo.action')}
-          </BaseButton>
+          </ElButton>
         )
       }
     }

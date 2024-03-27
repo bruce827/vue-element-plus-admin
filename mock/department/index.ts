@@ -1,6 +1,9 @@
+import config from '@/config/axios/config'
+import { MockMethod } from 'vite-plugin-mock'
 import { toAnyString } from '@/utils'
 import Mock from 'mockjs'
-import { SUCCESS_CODE } from '@/constants'
+
+const { code } = config
 
 const departmentList: any = []
 
@@ -28,61 +31,55 @@ for (let i = 0; i < 5; i++) {
       {
         // 部门名称
         departmentName: '研发部',
-        id: toAnyString(),
         createTime: '@datetime',
         // 状态
         status: Mock.Random.integer(0, 1),
-        // 备注
+        id: toAnyString(),
         remark: '@cword(10, 15)'
       },
       {
         // 部门名称
         departmentName: '产品部',
-        id: toAnyString(),
         createTime: '@datetime',
         // 状态
         status: Mock.Random.integer(0, 1),
-        // 备注
+        id: toAnyString(),
         remark: '@cword(10, 15)'
       },
       {
         // 部门名称
         departmentName: '运营部',
-        id: toAnyString(),
         createTime: '@datetime',
         // 状态
         status: Mock.Random.integer(0, 1),
-        // 备注
+        id: toAnyString(),
         remark: '@cword(10, 15)'
       },
       {
         // 部门名称
         departmentName: '市场部',
-        id: toAnyString(),
         createTime: '@datetime',
         // 状态
         status: Mock.Random.integer(0, 1),
-        // 备注
+        id: toAnyString(),
         remark: '@cword(10, 15)'
       },
       {
         // 部门名称
         departmentName: '销售部',
-        id: toAnyString(),
         createTime: '@datetime',
         // 状态
         status: Mock.Random.integer(0, 1),
-        // 备注
+        id: toAnyString(),
         remark: '@cword(10, 15)'
       },
       {
         // 部门名称
         departmentName: '客服部',
-        id: toAnyString(),
         createTime: '@datetime',
         // 状态
         status: Mock.Random.integer(0, 1),
-        // 备注
+        id: toAnyString(),
         remark: '@cword(10, 15)'
       }
     ]
@@ -92,11 +89,11 @@ for (let i = 0; i < 5; i++) {
 export default [
   // 列表接口
   {
-    url: '/mock/department/list',
+    url: '/department/list',
     method: 'get',
     response: () => {
       return {
-        code: SUCCESS_CODE,
+        code: code,
         data: {
           list: departmentList
         }
@@ -104,11 +101,11 @@ export default [
     }
   },
   {
-    url: '/mock/department/table/list',
+    url: '/department/table/list',
     method: 'get',
     response: () => {
       return {
-        code: SUCCESS_CODE,
+        code: code,
         data: {
           list: departmentList,
           total: 5
@@ -117,7 +114,7 @@ export default [
     }
   },
   {
-    url: '/mock/department/users',
+    url: '/department/users',
     method: 'get',
     timeout: 1000,
     response: ({ query }) => {
@@ -135,13 +132,15 @@ export default [
             email: '@EMAIL',
             // 创建时间
             createTime: '@datetime',
+            // 角色
+            role: '@first',
             // 用户id
             id: toAnyString()
           })
         )
       }
       return {
-        code: SUCCESS_CODE,
+        code: code,
         data: {
           total: 100,
           list: mockList
@@ -151,19 +150,19 @@ export default [
   },
   // 保存接口
   {
-    url: '/mock/department/user/save',
+    url: '/department/user/save',
     method: 'post',
     timeout: 1000,
     response: () => {
       return {
-        code: SUCCESS_CODE,
+        code: code,
         data: 'success'
       }
     }
   },
   // 删除接口
   {
-    url: '/mock/department/user/delete',
+    url: '/department/user/delete',
     method: 'post',
     response: ({ body }) => {
       const ids = body.ids
@@ -174,7 +173,7 @@ export default [
         }
       } else {
         return {
-          code: SUCCESS_CODE,
+          code: code,
           data: 'success'
         }
       }
@@ -182,19 +181,19 @@ export default [
   },
   // 保存接口
   {
-    url: '/mock/department/save',
+    url: '/department/save',
     method: 'post',
     timeout: 1000,
     response: () => {
       return {
-        code: SUCCESS_CODE,
+        code: code,
         data: 'success'
       }
     }
   },
   // 删除接口
   {
-    url: '/mock/department/delete',
+    url: '/department/delete',
     method: 'post',
     response: ({ body }) => {
       const ids = body.ids
@@ -205,10 +204,10 @@ export default [
         }
       } else {
         return {
-          code: SUCCESS_CODE,
+          code: code,
           data: 'success'
         }
       }
     }
   }
-]
+] as MockMethod[]

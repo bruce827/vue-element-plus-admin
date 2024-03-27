@@ -19,8 +19,7 @@ const getList = () => {
         width,
         height,
         id: toAnyString(),
-        // http更换为https
-        image_uri: Mock.Random.image(`${width}x${height}`).replace('http://', 'https://')
+        image_uri: Mock.Random.image(`${width}x${height}`)
       })
     )
   }

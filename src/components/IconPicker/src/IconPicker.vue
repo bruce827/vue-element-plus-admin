@@ -30,8 +30,8 @@ const iconSize = computed(() => {
   return unref(size) === 'small'
     ? 'var(--el-component-size-small)'
     : unref(size) === 'large'
-      ? 'var(--el-component-size-large)'
-      : 'var(--el-component-size)'
+    ? 'var(--el-component-size-large)'
+    : 'var(--el-component-size)'
 })
 
 const iconWrapStyle = computed((): CSSProperties => {
@@ -90,11 +90,6 @@ const popoverShow = () => {
 }
 
 const iconSelect = (icon: string) => {
-  // 如果是同一个icon则不做处理，则相当于点击了清空按钮
-  if (icon === unref(modelValue)) {
-    modelValue.value = ''
-    return
-  }
   modelValue.value = icon
 }
 
@@ -111,7 +106,7 @@ const inputClear = () => {
 
 <template>
   <div :class="prefixCls" class="flex justify-center items-center box">
-    <ElInput disabled v-model="modelValue" clearable />
+    <ElInput disabled v-model="modelValue" />
     <ElPopover
       placement="bottom"
       trigger="click"
@@ -149,10 +144,8 @@ const inputClear = () => {
                     icon === modelValue ? 'var(--el-color-primary)' : 'var(--el-border-color)'
                   }`,
                   boxSizing: 'border-box',
-                  margin: '2px',
-                  transition: 'all 0.3s'
+                  margin: '2px'
                 }"
-                class="hover:border-color-[var(--el-color-primary)]!"
                 @click="iconSelect(icon)"
               >
                 <Icon

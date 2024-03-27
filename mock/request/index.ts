@@ -1,72 +1,64 @@
-import { SUCCESS_CODE } from '@/constants'
+import config from '@/config/axios/config'
+import { MockMethod } from 'vite-plugin-mock'
 
 const timeout = 600000
 
+const { code } = config
+
 export default [
   {
-    url: '/mock/request/1',
+    url: '/request/1',
     method: 'get',
     timeout,
     response: () => {
       return {
-        code: SUCCESS_CODE,
+        code: code,
         data: 'request-1'
       }
     }
   },
   {
-    url: '/mock/request/2',
+    url: '/request/2',
     method: 'get',
     timeout,
     response: () => {
       return {
-        code: SUCCESS_CODE,
+        code: code,
         data: 'request-2'
       }
     }
   },
   {
-    url: '/mock/request/3',
+    url: '/request/3',
     method: 'get',
     timeout,
     response: () => {
       return {
-        code: SUCCESS_CODE,
+        code: code,
         data: 'request-3'
       }
     }
   },
   {
-    url: '/mock/request/4',
+    url: '/request/4',
     method: 'get',
     timeout,
     response: () => {
       return {
-        code: SUCCESS_CODE,
+        code: code,
         data: 'request-4'
       }
     }
   },
   {
-    url: '/mock/request/5',
+    url: '/request/5',
     method: 'get',
     timeout,
     response: () => {
       return {
-        code: SUCCESS_CODE,
+        code: code,
         data: 'request-5'
       }
     }
-  },
-  {
-    url: '/mock/request/expired',
-    method: 'get',
-    timeout: 0,
-    response: () => {
-      return {
-        code: 401,
-        message: 'token expired'
-      }
-    }
   }
-]
+] as MockMethod[]

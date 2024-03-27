@@ -20,7 +20,7 @@ const props = defineProps({
     type: Object as PropType<EChartsOption>,
     required: true
   },
-  width: propTypes.oneOfType([Number, String]).def('100%'),
+  width: propTypes.oneOfType([Number, String]).def(''),
   height: propTypes.oneOfType([Number, String]).def('500px')
 })
 
@@ -86,9 +86,7 @@ const contentResizeHandler = async (e: TransitionEvent) => {
 }
 
 onMounted(() => {
-  setTimeout(() => {
-    initChart()
-  }, 0)
+  initChart()
 
   window.addEventListener('resize', resizeHandler)
 

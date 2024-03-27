@@ -48,9 +48,7 @@ export default {
     lengthRange: 'The length should be between {min} and {max}',
     notSpace: 'Spaces are not allowed',
     notSpecialCharacters: 'Special characters are not allowed',
-    isEqual: 'The two are not equal',
-    // 列设置
-    setting: 'Setting'
+    isEqual: 'The two are not equal'
   },
   lock: {
     lockScreen: 'Lock screen',
@@ -121,8 +119,7 @@ export default {
     usernamePlaceholder: 'Please input username',
     passwordPlaceholder: 'Please input password',
     code: 'Verification code',
-    codePlaceholder: 'Please input verification code',
-    getCode: 'Get code'
+    codePlaceholder: 'Please input verification code'
   },
   router: {
     login: 'Login',
@@ -180,16 +177,7 @@ export default {
     details: 'Details',
     iconPicker: 'Icon picker',
     request: 'Request',
-    waterfall: 'Waterfall',
-    imageCropping: 'Image cropping',
-    videoPlayer: 'Video player',
-    // 表格视频预览
-    tableVideoPreview: 'Table video preview',
-    cardTable: 'Card table',
-    personalCenter: 'Personal center',
-    personal: 'Personal',
-    avatars: 'Avatars',
-    iAgree: 'I agree'
+    waterfall: 'Waterfall'
   },
   permission: {
     hasPermission: 'Please set the operation permission value'
@@ -336,8 +324,7 @@ export default {
     upload: 'Upload',
     // 用户头像
     userAvatar: 'User avatar',
-    iconPicker: 'Icon picker',
-    iAgree: 'I agree'
+    iconPicker: 'Icon picker'
   },
   guideDemo: {
     guide: 'Guide',
@@ -465,9 +452,7 @@ export default {
     fixedHeaderOrAuto: 'Fixed header or auto',
     getSelections: 'Get selections',
     preview: 'Preview',
-    showOrHiddenSortable: 'Show or hidden sortable',
-    videoPreview: 'Video preview',
-    cardTable: 'Card table'
+    showOrHiddenSortable: 'Show or hidden sortable'
   },
   richText: {
     richText: 'Rich text',
@@ -566,9 +551,5 @@ export default {
   inputPasswordDemo: {
     title: 'InputPassword',
     inputPasswordDes: 'Secondary packaging of Input components based on ElementPlus'
-  },
-  avatarsDemo: {
-    title:
-      'Avatar component for avatar list, secondary packaging based on element plus Avatar component'
   }
 }
