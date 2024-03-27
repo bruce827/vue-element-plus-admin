@@ -1,8 +1,18 @@
 import request from '@/config/axios'
-import { DepartmentListResponse, DepartmentUserParams, DepartmentUserResponse } from './types'
+import {
+  DepartmentListResponse,
+  DepartmentUserParams,
+  DepartmentUserResponse,
+  QueryParamsType
+} from './types'
 
+/**
+ * @description 获取全量部门
+ * @param params {QueryParamsType}
+ * @returns promise
+ */
 export const getDepartmentApi = () => {
-  return request.get<DepartmentListResponse>({ url: '/department/list' })
+  return request.post<DepartmentListResponse>({ url: '/department/query' })
 }
 
 export const getUserByIdApi = (params: DepartmentUserParams) => {
@@ -26,7 +36,11 @@ export const saveDepartmentApi = (data: any) => {
 export const deleteDepartmentApi = (ids: string[] | number[]) => {
   return request.post({ url: '/department/delete', data: { ids } })
 }
-
-export const getDepartmentTableApi = (params: any) => {
-  return request.get({ url: '/department/table/list', params })
+/**
+ * @description 获取部门table
+ * @param params {QueryParamsType}
+ * @returns promise
+ */
+export const getDepartmentTableApi = (data: QueryParamsType) => {
+  return request.post({ url: '/department/list', data })
 }

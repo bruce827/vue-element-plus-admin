@@ -125,3 +125,20 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Performance Improvements
 - 部门管理原型优化
+
+## [V0.3.0] (2023-11-26) 部门管理功能
+
+### Features
+
+- 部门管理联调完成
+### Bug Fixes
+
+无
+
+### Docs
+
+- 项目范围文档v0.9
+- 项目计划v1.0
+- 接口文档v1.0（notion）
+
+### Performance Improvements

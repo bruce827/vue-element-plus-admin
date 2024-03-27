@@ -28,6 +28,7 @@ const { tableRegister, tableState, tableMethods } = useTable({
       pageSize: unref(pageSize),
       ...unref(searchParams)
     })
+    debugger
     return {
       list: res.data.list,
       total: res.data.total
@@ -98,12 +99,13 @@ const crudSchemas = reactive<CrudSchema[]>([
       },
       optionApi: async () => {
         const res = await getDepartmentApi()
+        debugger
         return res.data.list
       }
     }
   },
   {
-    field: 'id',
+    field: 'departmentName',
     label: '部门名称',
     table: {
       slots: {

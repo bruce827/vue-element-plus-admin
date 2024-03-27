@@ -36,8 +36,8 @@ export const constantRouterMap: AppRouteRecordRaw[] = [
   },
   {
     path: '/login',
-    component: () => import('@/views/Login/Login.vue'),
-    // component: () => import('@/views/newLogin/index.vue'),
+    // component: () => import('@/views/Login/Login.vue'),
+    component: () => import('@/views/newLogin/index.vue'),
     name: 'Login',
     meta: {
       hidden: true,

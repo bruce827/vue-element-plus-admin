@@ -15,7 +15,7 @@ const config: AxiosConfig = {
    * api请求基础路径
    */
   baseUrl: {
-    // 开发环境接口前缀
+    // 沈阳开发环境接口前缀// base: 'http://192.168.10.23:28808/management-authmanagement',
     base: '',
 
     // 打包开发环境接口前缀

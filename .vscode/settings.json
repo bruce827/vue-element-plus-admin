@@ -2,7 +2,7 @@
   "typescript.tsdk": "node_modules/typescript/lib",
   "prettier.enable": false,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "source.fixAll.eslint": "explicit"
   },
   "[vue]": {
     "editor.defaultFormatter": "Wscats.vue"
@@ -20,6 +20,7 @@
     "Cascader",
     "Emitt",
     "Recordset",
+    "authmanagement",
     "daterange",
     "datetime",
     "echarts",

@@ -30,3 +30,9 @@ export interface DepartmentUserResponse {
   list: DepartmentUserItem[]
   total: number
 }
+
+export interface QueryParamsType {
+  departmentName?: string
+  pageIndex: number
+  pageSize: number
+}
