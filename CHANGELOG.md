@@ -160,3 +160,20 @@ All notable changes to this project will be documented in this file. See [standa
 ### Performance Improvements
 
 - 增加丝带标签组件 
+
+## [V0.9.2] (2024-04-09) 添加cardlist
+
+### Features
+
+- 集成avue，并更新依赖
+- 增加卡片列表组件
+
+### Bug Fixes
+
+### Docs
+
+### Performance Improvements
+
+- 更新`eslint`标签配置方案
+- 更新依赖版本
+- elementPlus 组件改为**完整引入**

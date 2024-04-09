@@ -178,6 +178,22 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
             meta: {
               title: 'vxe-table插件集成'
             }
+          },
+          {
+            path: 'avue',
+            component: () => import('@/views/Components/Table/AvueTable.vue'),
+            name: 'AvueTable',
+            meta: {
+              title: 'avue插件集成'
+            }
+          },
+          {
+            path: 'card-list',
+            component: () => import('@/views/Components/Table/CardList.vue'),
+            name: 'CardList',
+            meta: {
+              title: '卡片列表'
+            }
           }
         ]
       },

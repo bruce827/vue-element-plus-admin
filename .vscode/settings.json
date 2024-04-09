@@ -17,6 +17,7 @@
   "i18n-ally.enabledFrameworks": ["vue", "react"],
   "god.tsconfig": "./tsconfig.json",
   "cSpell.ignoreWords": [
+    "Avue",
     "Cascader",
     "Emitt",
     "Recordset",
@@ -27,8 +28,13 @@
     "inksnkape",
     "robotInspection",
     "screenfull",
+    "smallwei",
     "svgs",
     "unref"
   ],
-  "vue3snippets.enable-compile-vue-file-on-did-save-code": false
+  "vue3snippets.enable-compile-vue-file-on-did-save-code": false,
+  "cSpell.words": [
+    "unocss",
+    "windi"
+  ]
 }

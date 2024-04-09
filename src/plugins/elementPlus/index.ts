@@ -1,5 +1,8 @@
 import type { App } from 'vue'
 
+import ElementPlus from 'element-plus'
+import 'element-plus/dist/index.css'
+
 // 需要全局引入一些组件，如ElScrollbar，不然一些下拉项样式有问题
 import { ElLoading, ElScrollbar } from 'element-plus'
 
@@ -31,11 +34,11 @@ const components = [
   ElCascader,
   ElTimeSelect,
   ElTimePicker,
-  ElDatePicker
+  ElDatePicker,
   // ElSwitch,
   // ElRate,
   // ElSlider,
-  // ElButton,
+  ElButton,
   // ElButtons
 ]
 
@@ -47,4 +50,7 @@ export const setupElementPlus = (app: App<Element>) => {
   components.forEach((component) => {
     app.component(component.name, component)
   })
+
+  // 为满足avue的需要，改为完整导入
+  app.use(ElementPlus)
 }

@@ -40,6 +40,9 @@ import 'vxe-table/lib/style.css'
 
 import {setupVexTable} from '@/plugins/vexTable'
 
+// avue 实例
+import {setupAvue} from '@/plugins/avue'
+
 
 // 创建实例
 const setupAll = async () => {
@@ -58,6 +61,8 @@ const setupAll = async () => {
   setupPermission(app)
 
   await setupVexTable(app)
+
+  await setupAvue(app)
 
   app.mount('#app')
 }

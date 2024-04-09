@@ -57,8 +57,8 @@ module.exports = defineConfig({
       {
         html: {
           void: 'always',
-          normal: 'never',
-          component: 'always'
+          normal: 'any',
+          component: 'any'
         },
         svg: 'always',
         math: 'always'

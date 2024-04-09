@@ -1,0 +1,132 @@
+/* HTML: <div class="ribbon">Your text content</div> */
+.ribbon {
+  font-size: 28px;
+  font-weight: bold;
+  color: #fff;
+}
+.ribbon0 {
+  --d: .8em; /* the depth */
+  
+  position: absolute;
+  top: 20px;
+  inset-inline: calc(-1*var(--d));
+  border-bottom: var(--d) solid #0008;
+  line-height: 1.8;
+  clip-path: polygon(0 0,100% 0,100% calc(100% - var(--d)),calc(100% - var(--d)) 100%,calc(100% - var(--d)) calc(100% - var(--d)),var(--d) calc(100% - var(--d)),var(--d) 100%,0 calc(100% - var(--d)));
+  background-color: #3FB8AF; /* the main color */
+}
+
+.ribbon1 {
+  --d: .8em; /* the depth */
+  
+  position: absolute;
+  bottom: 20px;
+  inset-inline: calc(-1*var(--d));
+  border-top: var(--d) solid #0008;
+  line-height: 1.8;
+  clip-path: polygon(0 100%,100% 100%,100% var(--d),calc(100% - var(--d)) 0%,calc(100% - var(--d)) var(--d),var(--d) var(--d),var(--d) 0%,0 var(--d));
+  background-color: #8FBE00; /* the main color */
+}
+
+
+.ribbon2 {
+  --f: .5em; /* control the folded part */
+  
+  position: absolute;
+  top: 0;
+  right: 0;
+  line-height: 1.8;
+  padding-inline: 1lh;
+  padding-bottom: var(--f);
+  border-image: conic-gradient(#0008 0 0) 51%/var(--f);
+  clip-path: polygon(
+    100% calc(100% - var(--f)),100% 100%,calc(100% - var(--f)) calc(100% - var(--f)),var(--f) calc(100% - var(--f)), 0 100%,0 calc(100% - var(--f)),999px calc(100% - var(--f) - 999px),calc(100% - 999px) calc(100% - var(--f) - 999px));
+  transform: translate(calc((1 - cos(45deg))*100%), -100%) rotate(45deg);
+  transform-origin: 0% 100%;
+  background-color: #BD1550; /* the main color  */
+}
+
+
+.ribbon3 {
+  --f: .5em; /* control the folded part */
+  
+  position: absolute;
+  top: 0;
+  left: 0;
+  line-height: 1.8;
+  padding-inline: 1lh;
+  padding-bottom: var(--f);
+  border-image: conic-gradient(#0008 0 0) 51%/var(--f);
+  clip-path: polygon(
+    100% calc(100% - var(--f)),100% 100%,calc(100% - var(--f)) calc(100% - var(--f)),var(--f) calc(100% - var(--f)), 0 100%,0 calc(100% - var(--f)),999px calc(100% - var(--f) - 999px),calc(100% - 999px) calc(100% - var(--f) - 999px));
+  transform: translate(calc((cos(45deg) - 1)*100%), -100%) rotate(-45deg);
+  transform-origin: 100% 100%;
+  background-color: #F07818; /* the main color  */
+}
+
+
+.ribbon4 {
+  --f: .5em; /* control the folded part*/
+  --r: .8em; /* control the ribbon shape */
+  
+  position: absolute;
+  left: 20px;
+  top: calc(-1*var(--f));
+  padding: .2em;
+  background: #BF4D28;
+  border-left: var(--f) solid #0005;
+  border-bottom: var(--r) solid #0000;
+  clip-path: polygon(var(--f) 0,100% 0,100% 100%,calc(50% + var(--f)/2) calc(100% - var(--r)), var(--f) 100%,var(--f) var(--f),0 var(--f));
+}
+
+.ribbon5 {
+  --f: .5em; /* control the folded part*/
+  --r: .8em; /* control the ribbon shape */
+  
+  position: absolute;
+  right: 20px;
+  top: calc(-1*var(--f));
+  padding: .2em;
+  background: #C8CF02;
+  border-right: var(--f) solid #0005;
+  border-bottom: var(--r) solid #0000;
+  clip-path: polygon(calc(100% - var(--f)) 0,0 0,0 calc(100% - var(--r)),calc(50% - var(--f)/2) 100%,calc(100% - var(--f)) calc(100% - var(--r)),calc(100% - var(--f)) var(--f),100% var(--f));
+}
+
+
+.ribbon6 {
+  --f: .5em; /* control the folded part*/
+  --r: .8em; /* control the ribbon shape */
+  
+  position: absolute;
+  top: 20px;
+  right: calc(-1*var(--f));
+  padding-inline: .25em;
+  line-height: 1.8;
+  background: #FA6900;
+  border-bottom: var(--f) solid #0005;
+  border-left: var(--r) solid #0000;
+  clip-path: 
+    polygon(0 0,100% 0,100% calc(100% - var(--f)),calc(100% - var(--f)) 100%,
+      calc(100% - var(--f)) calc(100% - var(--f)),0 calc(100% - var(--f)),
+      var(--r) calc(50% - var(--f)/2));
+}
+
+
+.ribbon7 {
+  --f: .5em; /* control the folded part*/
+  --r: .8em; /* control the ribbon shape */
+  
+  position: absolute;
+  top: 20px;
+  left: calc(-1*var(--f));
+  padding-inline: .25em;
+  line-height: 1.8;
+  background: #987F69;
+  border-bottom: var(--f) solid #0005;
+  border-right: var(--r) solid #0000;
+  clip-path: 
+    polygon(calc(100% - var(--r)) 0,0 0,0 calc(100% - var(--f)),var(--f) 100%,
+      var(--f) calc(100% - var(--f)),calc(100% - var(--r)) calc(100% - var(--f)),
+      100% calc(50% - var(--f)/2));
+}
