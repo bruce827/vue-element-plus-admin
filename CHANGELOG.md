@@ -177,3 +177,15 @@ All notable changes to this project will be documented in this file. See [standa
 - 更新`eslint`标签配置方案
 - 更新依赖版本
 - elementPlus 组件改为**完整引入**
+
+## [V0.9.3] (2024-04-12)
+
+### Features
+
+### Bug Fixes
+
+### Docs
+
+### Performance Improvements
+
+- 优化cardlist自定义弹窗

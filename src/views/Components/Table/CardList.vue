@@ -8,32 +8,38 @@
     const page = ref(null)
     const form = ref({})
     option.value = {
-        grid: true,
+      grid: true,
         gridSpan: 12,
-        gridBackgroundColor:'linear-gradient(to right, rgba(255,0,0,0.2), rgba(255,0,0,0.2))',
-        // gridBackgroundImage: '/images/grid.png',
+        gridBackgroundColor: 'linear-gradient(to right, rgba(255,0,0,0.2), rgba(255,0,0,0.2))',
+        index: true,
+        align: 'center',
+        headerAlign: 'center',
+        border: true,
+        stripe: true,
         column: [
-          {
-            label: '姓名',
-            prop: 'name',
-          }, {
-            label: '性别',
-            prop: 'sex',
-            gridRow: true
-          }, {
-            label: '年龄',
-            prop: 'age',
-          }, {
-            label: '省份',
-            prop: 'province',
-            type: 'select',
-            props: {
-              label: 'name',
-              value: 'code'
-            },
-            // dicUrl: `${baseUrl}/getProvince`
-          }
-        ]
+            {
+                label: '姓名',
+                prop: 'name'
+            }, {
+                label: '性别',
+                prop: 'sex',
+                gridRow: true
+            }, {
+                label: '年龄',
+                prop: 'age'
+            }, {
+                label: '省份',
+                prop: 'province',
+                type: 'select',
+                props: {
+                    label: 'name',
+                    value: 'code'
+                },
+                // dicUrl: `${baseUrl}/getProvince`
+            }
+        ],
+        viewBtn:true,
+        viewBtnText:'2324344'
       }
     data.value = [{
         name: '张三',
@@ -81,6 +87,13 @@
       }
     }
 
+    /**
+     * 
+     */
+    function showModal(){
+      debugger
+    }
+
     onMounted(()=>{
         nextTick(()=>{
             // addRibbon("抽油机")
@@ -94,7 +107,12 @@
               :data="data"
               :option="option"
               :page="page"
-            />
+            >
+            <template #menu>
+              <el-button 
+                 type="primary" @click="showModal">自定义操作</el-button>
+            </template> 
+            </CardList>
     </div>
 
 </template>
